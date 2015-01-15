@@ -1,0 +1,22 @@
+            <div class="top_leaders">
+              <div class="tl_content" id="tl_content">
+                    <ul class="tabs" id="tl_tabs">
+                        <li class="non_profit_leadears"><a href="#charities">Non Profit Leaders</a></li>
+                    </ul>
+                    
+                  <div class="tl_tab_content">
+                    
+                    <ol id="charities">
+{% for nprofit in top_nprofit %}
+                        <li><a href="/nonprofit/index/{{ nprofit.id }}">{{ nprofit.name }}</a></li>
+{% endfor %}
+                    </ol>
+                    
+                    <!-- <ol id="congregations"> <li><a href=""><span>01.</span>Lorem ipsum dolor sit amet</a></li> <li><a href=""><span>02.</span>consectetur</a></li> <li><a href=""><span>03.</span>adipisicing elit, sed do</a></li> </ol> -->
+                    
+                    <!-- <ol id="schools"> <li><a href=""><span>14.</span>voluptate velit</a></li> <li><a href=""><span>15.</span>Lorem ipsum dolor sit amet</a></li> <li><a href=""><span>16.</span>consectetur</a></li> </ol> -->
+                    
+                    </div>
+                    
+                </div>
+            </div>

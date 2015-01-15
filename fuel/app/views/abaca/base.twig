@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/slider.css" />
+    <link rel="stylesheet" href="/assets/css/colorbox.css" />
+
+{% for style in styles %}
+<link href="/assets/css/{{ style }}" rel="stylesheet" type="text/css" media="all">
+{% endfor %}
+{% if view_css_head %}
+<link rel="stylesheet" type="text/css" href="/{{ view_css_head }}">
+{% endif %}
+{% for style, version in stylev %}
+<link href="/assets/css/{{ style }}?v={{ version }}" rel="stylesheet" type="text/css" media="all">
+{% endfor %}
+{% for script in top_scripts %}
+<script src="/assets/js/{{ script }}" type="text/javascript"></script>
+{% endfor %}
+{% for script in cdn_scripts %}
+<script src="{{ script }}" type="text/javascript"></script>
+{% endfor %}
+<script type="text/javascript">on_ready=[];c4c={};</script>
+
+<!--[if lt IE 9]>
+  <script type="text/javascript" src="http://info.template-help.com/files/ie6_warning/ie6_script_other.js"></script>
+  <script type="text/javascript" src="/assets/homepage/html5.js"></script>
+<![endif]-->
+<!--[if IE]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+</head>
+
+<body>
+
+<!-- Flash Messages -->
+{% if flash_okhide %}
+{% if _ADMINISTRATOR_ %}
+    <div class="alert-message success okhidelow" onclick="hide_flash(this, 300)"><p>{{ flash_okhide|join('</p><p>') }}</p></div>
+{% else %}
+    <div class="alert-message success okhide" onclick="hide_flash(this, 300)"><p>{{ flash_okhide|join('</p><p>') }}</p></div>
+{% endif %}
+{% endif %}
+
+{% if flash_success %}
+    <div class="alert-message success" onclick="hide_flash(this, 300)"><p>{{ flash_success|join('</p><p>') }}</p></div>
+{% endif %}
+
+{% if flash_error %}
+    <div class="alert-message error" onclick="hide_flash(this, 300)"><p>{{ flash_error|join('</p><p>') }}</p></div>
+{% endif %}
+
+<!-- Header Start -->
+{% include "#{C4c.theme}/1010.header_strip.twig" %}
+{% include "#{C4c.theme}/1020.site_header.twig" %}
+
+<div id="content_pan">
+    <div class="cp_inner">
+
+<!-- Content Start -->
+{% block content %}
+    {{ content }}
+{% endblock %}
+       
+       <div class="clear"></div>
+    </div>
+</div>
+
+<!-- Footer Start -->
+{% include "#{C4c.theme}/1900.site_footer.twig" %}
+
+{% for script in scripts %}
+<script src="/assets/js/{{ script }}" type="text/javascript"></script>
+{% endfor %}
+{% for script, version in scriptv %}
+<script src="/assets/js/{{ script }}?v={{ version }}" type="text/javascript"></script>
+{% endfor %}
+<!--<script src="/assets/js/manual-scroller.js"></script>-->
+<script type="text/javascript">$(function(){$.each(on_ready,function(nil,f){f();});});</script>
+{% if view_js_foot %}
+<script type="text/javascript" src="/{{ view_js_foot }}"></script>
+{% endif %}
+</body>
+</html>

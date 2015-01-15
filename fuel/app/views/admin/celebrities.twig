@@ -1,0 +1,13 @@
+<!-- full width -->
+<div class="widget">
+    <div class="header"><span><span class="ico gray administrator"></span>Celebrities</span>
+        <a class="uibutton submit_form" href="/admin/celebrities/create">Add a Celebrity</a>
+    </div><!-- End header -->
+    <div class="content" >
+
+{% for celeb in celebrities %}
+        <div class="floatLeft one-third"><input data-id="{{ celeb.id }}" type="button" value="x" title="Delete {{ celeb.first_name }} {{ celeb.last_name }}"> {{ celeb.first_name }} {{ celeb.last_name }}</div>
+{% endfor %}
+
+    </div><!-- End content -->
+</div><!-- End full width -->

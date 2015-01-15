@@ -1,0 +1,20 @@
+            <div class="banner_box">
+                <div class="birthday_bg">
+                    <div class="birthday_bg_heading">HAPPY BIRTHDAY</div>
+
+{% for birthday_user in birthday_users %}
+                    <div class="birthday_bg_div">
+                        <span><a href="/member/index/{{ birthday_user.id }}"><img title="image" src="{{ birthday_user.avatar }}"></a></span>
+                        <div class="birthday_bg_div2">
+                            <ul>{{ birthday_user.first_name }} {{ birthday_user.last_name }}<li>
+    {% for nonprofit in members[birthday_user.id].nonprofits %}
+                                <li><a href="/nonprofit/index/{{ nonprofit.id }}">{{ nonprofit.name }}</a></li>
+    {% endfor %}
+                            </ul>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+{% endfor %}
+
+                </div>
+            </div>

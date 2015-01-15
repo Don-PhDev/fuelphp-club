@@ -1,0 +1,14 @@
+<div class="hphc_login_box">
+    <h2>Login</h2>
+
+{{ form_open('auth/signin/member') }}
+
+        <input type="text" name="username" class="input_text" placeholder="Username" aria-required="true" required>
+        <input type="password" name="password" class="input_text" placeholder="Password" aria-required="true" required>
+        <div class="remember_pan"><label class="remember_me"><input type="checkbox" name="" id="" />Remember me.</label> <a href="" class="forgot_link">Forgot password?</a><div class="clear"></div></div>
+        <input type="submit" value="" class="login_btn">
+
+{{ form_close() }}
+
+    <div class="enroll_now"> It's free! <a href="/registration">Enroll me now..</a> </div>
+</div>

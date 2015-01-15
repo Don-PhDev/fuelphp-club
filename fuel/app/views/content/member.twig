@@ -1,0 +1,61 @@
+<div id="cp_left">
+    <div class="registration">
+        <div class="registration_form">
+
+            <h1>{{ member.user.first_name }} {{ member.user.last_name }}</h1>
+            <div class="members_nprofit">
+                <ul>
+                {% for nonprofit in member.nonprofits %}
+                    <li><a href="#">{{ nonprofit.name }} <span class="members_title_heading2">({{ nonprofit.running_points }})</span></a></li>
+                {% endfor %}
+                </ul>
+                <div class="edit_btn"><span>(Edit)</span><img src="/assets/img/england_bg.gif"></div>
+            </div>
+            <div class="member_person_div">
+                    <div class="member_person_div">
+                        <div class="member_person_div_image"><img style="height:122px; width:122px" src="{{ img_filename }}"></div>
+                        <div class="member_person_div2">
+                            <div class="member_person_div2_heading1">Current Points : <span>{{ member.running_points }}</span></div>
+                            <div class="member_person_div2_heading2">Email: {{ member.user.email }}</div>
+                        </div>
+                        <div class="member_person_div2_heading4">
+                            Challenges:   <span>5845</span>            
+                            Shopping:  <span>5845</span>                 
+                            New members: <span>5845</span> 
+                            <br>
+                            Misc:  <span>5845</span>                   
+                            TOTAL:  <span>1089</span>
+                        </div>
+                    </div>
+            </div>
+            <div class="clearBoth"></div>
+
+        {% include "member-whyichose.twig" %}
+        {% include "member-comments.twig" %}
+
+            <div class="why_i_chose">
+                <div class="today_share_heading">Add my comments:</div>
+
+    {% if _LOGGED_USER_ %}
+        {{ form_open() }}
+
+                <fieldset>
+                    <div class="why_i_chose_div">
+                        <textarea name="comment" required aria-required="true">{{ value.comment }}</textarea>
+                        {{ errmsg.comment ? "<div class='flderrmsg'>#{ errmsg.comment }</div>" : '' }}
+                        <button class="post_btn"></button>
+                    </div>
+                </fieldset>
+
+        {{ form_close() }}
+    {% else %}
+        <div>Please <a href="/">sign in</a> so that you may add comments.</div>
+    {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+{% include "right-new-members.twig" %}
+<div class="clear"></div>
+<div><img src="/assets/img/sponser_wanted.gif"></div>

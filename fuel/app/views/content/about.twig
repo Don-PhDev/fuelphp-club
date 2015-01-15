@@ -1,0 +1,36 @@
+
+<div id="cp_about">
+    <div class="contact">
+        <div id="cp_right"><a href="/"><input type="submit" name="input" value="" class="members_home2_btn" /></a>&nbsp;&nbsp;</div>
+        <span class="about_heading">About Us</span>
+        <p class="about_heading2"> OUR GOAL</p>
+        <p> To enable everyone who has a passion for a non profit cause, a charity, congregation, school, or fraternal organization, to support that cause, simply by enjoying playing in our challenges section and shopping for things they want to buy,in our shopping mall. The clubs profit, 75% of the gross income of the club, goes to your favorite cause.<br />
+        <br /></p>
+        <p class="about_heading2">OUR BENEFACTORS</p>
+        <p>These people and businesses have donated their time and services, and for this we are extremely grateful, and would appreciate you considering them for your endeavors
+        <br />
+        <br /></p>
+
+        <div class="quote"><blockquote>"You give but little when you give of your possessions. It is when you give of yourself that you truly give"</blockquote>
+            <div class="quotedby">Kahlil Gibran</span></div>
+            <div class="clearBoth"></div>
+        </div>
+
+{% for ben in benefactors %}
+
+        <div class="about_box">
+            <div class="about_box_left">
+                <img src="{{ ben.image_filename ? "/web_data/benefactor/#{ ben.image_filename }" : '/assets/img/no_image_2.jpg' }}" width="89" height="89" />
+                <span class="about_box_left_h1">{{ ben.name }}</span><br />
+                <span class="about_box_left_h2">{{ ben.organization_name }}</span>
+                <img src="{{ ben.organization_logo ? "/web_data/benefactor/#{ ben.organization_logo }" : '/assets/img/no_image_2.jpg' }}" width="32" height="36" />
+            </div>
+            <div class="about_box_right">{{ ben.organization_text }}</div>
+            <div style="clear:both;"></div>            
+        </div>
+
+{% endfor %}
+
+    </div>
+</div>
+<div class="clear"></div>

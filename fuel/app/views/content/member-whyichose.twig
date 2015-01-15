@@ -1,0 +1,15 @@
+        {% for nonprofit in member.nonprofits %}
+
+            <div class="why_i_chose">
+                <div>
+                    <legend class="abaca-legend2"><cufon class="cufon cufon-canvas" alt="Why I Chose" style="width: 34px; height: 16px;"><canvas width="45" height="15" style="width: 45px; height: 15px; top: 0px; left: 0px;"></canvas><cufontext>Why I Chose</cufontext></cufon></legend>
+
+                    <legend class="abaca-legend3">
+                        <a href="#"><cufon class="cufon cufon-canvas" alt="{{ nonprofit.name }}" style="width: 32px; height: 16px;"><canvas width="43" height="15" style="width: 43px; height: 15px; top: 0px; left: 0px;"></canvas><cufontext>{{ nonprofit.name }}</cufontext></cufon></a>
+                    </legend>
+                </div>
+                <div class="clearBoth"></div>
+                <blockquote class="quote">{{ reasons[nonprofit.id] }}</blockquote>
+            </div>
+            
+        {% endfor %}

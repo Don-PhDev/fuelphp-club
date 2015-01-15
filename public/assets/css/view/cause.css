@@ -1,0 +1,13 @@
+
+div.cause {
+    margin: 15px 0;
+    border-bottom: solid 1px #e6e7e8;
+}
+div.cause a {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+div.cause span {
+    margin-left: 18px;
+    color: #999;
+}

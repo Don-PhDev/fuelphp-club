@@ -1,0 +1,71 @@
+<div class="featured-celebrities">
+{% for celebrity in random_celebrities %}
+
+      <div class="featured">
+          <div class="featured-img"><a href="/celebrities/profile/{{ celebrity.id }}"><img src="/web_data/celebrities/img/{{ celebrity.image_filename }}" alt="celebrity"></a></div>
+          <div class="featured-name">{{ celebrity.first_name }} {{ celebrity.last_name }}</div>
+          <div class="featured-about">
+
+  {% if celebrity.nonprofits %}
+            <div class="label clearBoth">Charities &amp; foundations supported:</div>
+            <ul>
+      {% for nonprofit in celebrity.nonprofits %}
+              <li><a href="">{{ nonprofit.name }}</a></li>
+      {% endfor %}
+            </ul>
+  {% endif %}
+
+  {% if celebrity.causes %}
+            <div class="label clearBoth">Supported Causes:</div>
+            <ul>
+      {% for cause in celebrity.causes %}
+              <li><a href="">{{ cause.cause }}</a></li>
+      {% endfor %}
+            </ul>
+  {% endif %}
+          </div>
+
+          <div class="clearBoth"></div>
+
+  {% if celebrity.members %}
+        <div class="container-slider">
+          <label>Fans <span>({{ count(celebrity.members) }})</span></label>
+          <div class="celeb-members">
+
+      {% for member in celebrity.members %}
+
+          {% if loop.first %} 
+              <div class="member-group">
+          {% else %}
+            {% if loop.index0 % 6 == 0 %} 
+              </div>
+              <div class="member-group">
+            {% endif %}
+          {% endif %}
+
+            
+              <div class="member">
+                  <div class="small-img"><a href="/member/index/{{ member.id }}"><img src="{{ member.user.get_avatar(member.user.id, 60) }}"></a></div>
+                  <div class="small-name"><a href="/member/index/{{ member.id }}">{{ member.user.first_name }}</a></div>
+              {% if member.nonprofits %}
+                {% for nonprofit in member.nonprofits %}
+                  <div class="small-nprofit"><a href="">{{ nonprofit.name }}</a></div>
+                {% endfor %}
+              {% endif %}
+              </div>
+
+          {% if loop.last %} 
+              </div>
+          {% endif %}
+
+      {% endfor %}
+
+          </div>
+        </div>
+  {% endif %}
+      </div>
+
+{% endfor %}
+
+        <div class="clearBoth"></div>
+    </div>

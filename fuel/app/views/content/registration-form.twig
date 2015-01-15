@@ -1,0 +1,184 @@
+            {{ form_open() }}
+                    <div class="rf_row">
+                        <span class="rf_label"><label for="">Email Address<span class="mandatory"> * </span> :</label></span>
+                        <input name="email" id="" class="input_text" value="{{ value.email }}" type="text" aria-required="true" required data-focus="1">
+                        <small>We assure you ZERO Spam &amp; 100% privacy.</small>
+                        {{ errmsg.email ? "<div class='flderrmsg'>#{ errmsg.email }</div>" : '' }}
+                    </div>
+                    <div class="rf_row">
+                        <span class="rf_label"><label for="">Display Name<span class="mandatory"> * </span> :</label></span>
+                        <input name="alias" id="" class="input_text" value="{{ value.alias }}" type="text" aria-required="true" required>
+                        <small>Will be displayed to other users.</small>
+                        {{ errmsg.alias ? "<div class='flderrmsg'>#{ errmsg.alias }</div>" : '' }}
+                    </div>
+                    <div class="rf_row">
+                        <span class="rf_label"><label for="">First Name<span class="mandatory"> * </span> :</label></span>
+                        <input name="first_name" id="" class="input_text" value="{{ value.first_name }}" type="text" aria-required="true" required>
+                        {{ errmsg.first_name ? "<div class='flderrmsg'>#{ errmsg.first_name }</div>" : '' }}
+                    </div>
+                    <div class="rf_row">
+                        <span class="rf_label"><label for="">Last Name <span class="mandatory"> * </span> :</label></span>
+                        <input name="last_name" id="" class="input_text" value="{{ value.last_name }}" type="text" aria-required="true" required>
+                        {{ errmsg.last_name ? "<div class='flderrmsg'>#{ errmsg.last_name }</div>" : '' }}
+                    </div>
+                    <div class="rf_row">
+                        <span class="rf_label"><label for="">Gender:</label></span>
+                        <label class="input_radio"><input name="gender" id="" class="" value="M" type="radio">Male</label>
+                        <label class="input_radio"><input name="gender" id="" class="" value="F" type="radio">Female</label>
+                        <div class="clear"></div>
+                    </div>
+<!--                     <div class="rf_row">
+                        <span class="rf_label"><label for="">Date Of Birth:</label></span>
+                        <input name="birth_date" id="" class="input_text date" value="{{ value.birth_date }}" type="text">
+                    </div>
+ -->                    
+                    <div class="rf_row">
+                        <span class="rf_label"><label for="">Date Of Birth:</label></span>
+                        {{ mac.select_same_value('birth_date_day', range(1, 31), value.birth_date_day, 'Day:', true, 'small') }}
+                        {{ mac.select_same_value('birth_date_month', range(1, 12), value.birth_date_month, 'Month:', true, 'small') }}
+                        {{ mac.select_same_value('birth_date_year', range(1920, 2013), value.birth_date_year, 'Year:', false, 'small') }}
+
+                        <div> <span class="small_heading">Day  <span class="mandatory">*</span></span>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<span class="small_heading">Month <span class="mandatory">*</span></span></div>
+                    </div>
+
+                    <div class="rf_row">
+                        <span class="rf_label"><label for="">Country <span class="mandatory"> * </span> :</label></span>
+                        {{ mac.select_with_grouping('country', countries_with_grouping, value.country, ' ', true) }}
+                        {{ errmsg.country ? "<div class='flderrmsg'>#{ errmsg.country }</div>" : '' }}
+                    </div>
+                    <div class="rf_row">
+                        <span class="rf_label"><label for="">State <span class="mandatory"> * </span> :</label></span>
+                        <input name="state" id="" class="input_text" value="{{ value.state }}" type="text" aria-required="true" required>
+                        {{ errmsg.state ? "<div class='flderrmsg'>#{ errmsg.state }</div>" : '' }}
+                    </div>
+                    <div class="rf_row">
+                        <span class="rf_label"><label for="">City <span class="mandatory"> * </span> :</label></span>
+                        <input name="city" id="" class="input_text" value="{{ value.city }}" type="text" aria-required="true" required>
+                        {{ errmsg.city ? "<div class='flderrmsg'>#{ errmsg.city }</div>" : '' }}
+                    </div>
+                    
+                    <div class="rf_row">
+                        <span class="rf_label"><label for="">Create Password <span class="mandatory"> * </span> :</label></span>
+                        <input name="password" id="" class="input_text" value="{{ value.password }}" type="password" aria-required="true" required>
+                        {{ errmsg.password ? "<div class='flderrmsg'>#{ errmsg.password }</div>" : '' }}
+                    </div>
+                    <div class="rf_row">
+                        <span class="rf_label"><label for="">Confirm Password <span class="mandatory"> * </span> :</label></span>
+                        <input name="confirm_password" id="" class="input_text" value="{{ value.confirm_password }}" type="password" aria-required="true" required>
+                        <span class="rf_row_small">Designate two Non Profits</span>
+                        {{ errmsg.confirm_password ? "<div class='flderrmsg'>#{ errmsg.confirm_password }</div>" : '' }}
+                    </div>
+                    
+               <br>
+
+                <fieldset>
+                    <legend><cufon style="width: 53px; height: 16px;" alt="Choose " class="cufon cufon-canvas"><canvas style="width: 64px; height: 15px; top: 0px; left: 0px;" height="15" width="64"></canvas><cufontext>Choose </cufontext></cufon><cufon style="width: 34px; height: 16px;" alt="Your " class="cufon cufon-canvas"><canvas style="width: 44px; height: 15px; top: 0px; left: 0px;" height="15" width="44"></canvas><cufontext>Your </cufontext></cufon><cufon style="width: 32px; height: 16px;" alt="Non " class="cufon cufon-canvas"><canvas style="width: 43px; height: 15px; top: 0px; left: 0px;" height="15" width="43"></canvas><cufontext>Non </cufontext></cufon><cufon style="width: 37px; height: 16px;" alt="Profit" class="cufon cufon-canvas"><canvas style="width: 46px; height: 15px; top: 0px; left: 0px;" height="15" width="46"></canvas><cufontext>Profit</cufontext></cufon></legend>
+                    <div class="rf_row">
+                        <span class="rf_label"><label for="">Country:</label></span>
+                        {{ mac.select_with_grouping('nprofit_country_1', countries_with_grouping, value.nprofit_country_1, 'country') }}
+                    </div>
+                    <div class="rf_row">
+                        <span class="rf_label"><label for="">Name:</label></span>
+                        <input name="nprofit_name_1" id="" class="input_text" value="{{ value.nprofit_name_1 }}" type="text">
+                    </div>
+                    <div class="rf_row">
+                        <span class="rf_label"><label for="">City:</label></span>
+                        <input name="nprofit_city_1" id="" class="input_text" value="{{ value.nprofit_city_1 }}" type="text">
+                    </div>
+                    <div class="rf_row">
+                        <span class="rf_label"><label for="">State:</label></span>
+                        <input name="nprofit_state_1" id="" class="input_text" value="{{ value.nprofit_state_1 }}" type="text">
+                    </div>
+
+                    <legend class="lgn"><cufon style="height: 16px;" alt="Need Help Finding A Non Profit" class="cufon cufon-canvas"><canvas style="height: 15px; top: 0px; left: 0px;"></canvas><cufontext>Need Help Finding A Non Profit</cufontext></cufon></legend>
+
+                    <div class="rf_row" id="help-find">
+                        <label class="radio_btn"><input name="r" type="radio" data-link="http://www.bbb.org/us/charity/">
+                            Better Business Bureau
+                        </label>
+                        <label class="radio_btn"><input name="r" type="radio" data-link="http://www.guidestar.org/NonprofitDirectory.aspx">
+                            Guidestar
+                        </label>
+                        <label class="radio_btn"><input name="r" type="radio" data-link="http://www.dmoz.org/Society/Organizations/Fraternal/">
+                            Fraternal Organizations
+                        </label>
+                    </div>
+                </fieldset>
+
+                    <br>
+                    <fieldset>
+                    <legend><cufon style="width: 53px; height: 16px;" alt="Choose " class="cufon cufon-canvas"><canvas style="width: 64px; height: 15px; top: 0px; left: 0px;" height="15" width="64"></canvas><cufontext>Choose </cufontext></cufon><cufon style="width: 34px; height: 16px;" alt="Your " class="cufon cufon-canvas"><canvas style="width: 44px; height: 15px; top: 0px; left: 0px;" height="15" width="44"></canvas><cufontext>Your </cufontext></cufon><cufon style="width: 32px; height: 16px;" alt="Non " class="cufon cufon-canvas"><canvas style="width: 43px; height: 15px; top: 0px; left: 0px;" height="15" width="43"></canvas><cufontext>Non </cufontext></cufon><cufon style="width: 37px; height: 16px;" alt="Profit" class="cufon cufon-canvas"><canvas style="width: 46px; height: 15px; top: 0px; left: 0px;" height="15" width="46"></canvas><cufontext>Profit</cufontext></cufon></legend>
+                    <div class="rf_row">
+                        <span class="rf_label"><label for="">Country:</label></span>
+                        {{ mac.select_with_grouping('nprofit_country_2', countries_with_grouping, value.nprofit_country_2, 'country') }}
+                    </div>
+                    <div class="rf_row">
+                        <span class="rf_label"><label for="">Name:</label></span>
+                        <input name="nprofit_name_2" id="" class="input_text" value="{{ value.nprofit_name_2 }}" type="text">
+                    </div>
+                    <div class="rf_row">
+                        <span class="rf_label"><label for="">City:</label></span>
+                        <input name="nprofit_city_2" id="" class="input_text" value="{{ value.nprofit_city_2 }}" type="text">
+                    </div>
+                    <div class="rf_row">
+                        <span class="rf_label"><label for="">State:</label></span>
+                        <input name="nprofit_state_2" id="" class="input_text" value="{{ value.nprofit_state_2 }}" type="text">
+                    </div>
+                    
+                    </fieldset>
+                    <br>
+
+
+                    <fieldset>
+                    <legend><cufon style="width: 36px; height: 16px;" alt="Who " class="cufon cufon-canvas"><canvas style="width: 47px; height: 15px; top: 0px; left: 0px;" height="15" width="47"></canvas><cufontext>Who </cufontext></cufon><cufon style="width: 61px; height: 16px;" alt="Referred " class="cufon cufon-canvas"><canvas style="width: 72px; height: 15px; top: 0px; left: 0px;" height="15" width="72"></canvas><cufontext>Referred </cufontext></cufon><cufon style="width: 24px; height: 16px;" alt="You" class="cufon cufon-canvas"><canvas style="width: 30px; height: 15px; top: 0px; left: 0px;" height="15" width="30"></canvas><cufontext>You</cufontext></cufon></legend>
+                    <div class="rf_row">
+                        <span class="rf_label"><label for="">First Name:</label></span>
+                        <input name="referer_first_name" id="" class="input_text" style="width:160px;" value="{{ value.referer_first_name }}" type="text">
+                        <label>Last Name:</label>
+                      <input name="referer_last_name" id="" class="input_text" style="width:160px;" value="{{ value.referer_last_name }}" type="text">
+                    </div>
+                    
+                    </fieldset>
+                    
+                    <div class="rf_row_bottom">
+<div class="rf_row_bottom_lft">Referral gets 500 points and a Thank you Note</div>
+<div class="rf_row_bottom_rgt"><a href="#"><img src="/assets/img/club_causes_logo.gif"></a></div>                    
+</div>
+
+
+
+<!--
+ <br>
+                        <div class="rf_row">
+<script type="text/javascript"
+    src="http://www.google.com/recaptcha/api/challenge?k={{ C4c.recaptcha_public_key }}">
+</script>
+<noscript>
+    <iframe src="http://www.google.com/recaptcha/api/noscript?k={{ C4c.recaptcha_public_key }}" height="300" width="500" frameborder="0"></iframe><br>
+    <textarea name="recaptcha_challenge_field" rows="3" cols="40">
+    </textarea>
+    <input type="hidden" name="recaptcha_response_field" value="manual_challenge">
+</noscript>
+                            <div class='hidden' id='captcha_message'></div>
+                        </div>
+-->
+                    <div class="rf_row">
+                        <label class="input_radio"><input name="terms_agreed" type="checkbox">I agree that I have read terms &amp; conditions. Privacy policy and Terms of use Club4Causes.com</label>
+                        <div class='hidden' id='terms_agreed_message'></div>
+                        {{ errmsg.terms_agreed ? "<div class='flderrmsg'>#{ errmsg.terms_agreed }</div>" : '' }}
+                    </div>
+
+                    {{ mac.honeypot() }}
+
+                    <div class="actions">
+                       <button class="ragister_btn"></button>
+                    </div>             
+
+            {{ form_close() }}
+
+<script type="text/javascript">
+    window.nonprofit_arr = [];
+    {% for np in nonprofit_arr %}
+        window.nonprofit_arr.push( $('<div/>').html("{{ np }}").text() );
+    {% endfor %}
+</script>

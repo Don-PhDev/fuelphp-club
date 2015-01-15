@@ -1,0 +1,22 @@
+            <div class="current_leaders">
+                <h1 class="cl_title">Newest Members</h1>
+                <div class="cl_content">
+
+{% for new_member in newest_members %}
+                
+                    <div class="leader_box">
+                        <div class="points">{{ new_member.running_points }}
+                            {{ mach.flag(new_member.address.get_country_code(new_member.address.country)) }}
+                        </div>
+                        <div><a class="nostyle" href="/member/index/{{ new_member.id }}"><img src="{{ new_member.user.get_avatar(new_member.user.id) }}" class="user_image" /></a></div>
+                        <span class="name">{{ new_member.user.first_name }} {{ new_member.user.last_name }}</span>
+    {% for nonprofit in new_member.nonprofits %}
+                        <div class="charity"><a href="/nonprofit/index/{{ nonprofit.id }}" title="{{ nonprofit.name }}">{{ nonprofit.name }}</a></div>
+    {% endfor %}
+                    </div>
+                
+{% endfor %}
+                
+                    <div class="clear"></div>
+                </div>
+            </div>

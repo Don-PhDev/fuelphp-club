@@ -1,0 +1,22 @@
+{% import 'macro/form.twig' as mac %}
+
+        <div id="cp_left">
+            <div class="registration">
+                <h1><cufon style="width: 159px; height: 30px;" alt="Registration " class="cufon cufon-canvas"><canvas style="width: 179px; height: 28px; top: 0px; left: -1px;" height="28" width="179"></canvas><cufontext>Registration </cufontext></cufon><cufon style="width: 66px; height: 30px;" alt="Form" class="cufon cufon-canvas"><canvas style="width: 69px; height: 28px; top: 0px; left: -1px;" height="28" width="69"></canvas><cufontext>Form</cufontext></cufon></h1>
+                <div class="mandatory_msg">To ensure you receive our emails, please add <strong>membersonly@club4causes.com</strong> to your address book.</div>
+                <div class="mandatory_msg">For your convenience we are using an invisible "captcha."</div>
+                <div class="mandatory_msg">Fields marked with asterisk (*) are mandatory.</div>
+                <div class="registration_form">
+
+{% include "registration-form.twig" %}
+
+                </div>
+            
+            </div>
+        </div>
+
+{% include "right-new-members.twig" %}
+
+        <div class="clear"></div>
+
+<script type="text/javascript" src="/assets/js/american_states_cities.js"></script>

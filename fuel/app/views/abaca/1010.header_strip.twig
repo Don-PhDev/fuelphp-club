@@ -1,0 +1,26 @@
+<div id="header_strip">
+    <div class="hs_inner">
+    
+        <ul id="header_menu">
+
+{% if current_user %}
+            <li><a href="/signout">Sign out</a></li>
+{% endif %}
+
+            <li><a href="/celebrities">Celebrities</a></li>
+            <li><a href="/donor">Donor Search</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/faq.html">FAQ</a></li>
+            <li><a href="/chat_room.html">Chat Rooms</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+        </ul>
+
+        <div id="language_box">
+            {{ mach.flag('us') }}
+            &nbsp; English US
+            <img src="/assets/img/translator_icon.gif" />
+        </div>
+    
+  </div>
+</div>

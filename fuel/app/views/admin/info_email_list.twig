@@ -1,0 +1,66 @@
+<!-- full width -->
+<div class="widget">
+    <div class="header"> <span ><span class="ico gray mail "></span>Daily Email List</span></div>
+    <div class="content" >
+
+{% for email in emails %}
+        
+    {% if not loop.first %}
+        <hr style="margin: 30px 0;">
+    {% endif %}
+
+        <div class="section">
+            <div class="subj">{{ loop.index }}. Subject: <strong>{{ email.email_subject }}</strong></div>
+        </div>
+
+        <div><textarea class="editor wysiwyg" cols="" rows="">{{ email.email_text }}</textarea></div>
+
+        <div class="section last">
+            <span class="checkslide">
+                <input type="checkbox" {{ email.is_active ? ' checked="checked" ' : '' }} data-id="{{ email.id }}">
+                <label data-on="ON" data-off="OFF"></label>
+            </span>
+            <span class="status_in_words">{{ email.is_active ? 'Actively sending' : 'Not sending' }}</span>
+        </div>
+
+{% endfor %}
+
+    </div><!-- End content -->
+</div><!-- End full width -->
+<script type="text/javascript">
+$(function(){
+    $('div.cleditorToolbar').hide();
+
+    $('input[type=checkbox]').click(function(){
+        $this = $(this);
+        is_checked = $(this).is(':checked');
+        $.post('/admin/ajax/set_email_status',
+        {
+            id: $(this).data('id'),
+            status: +is_checked
+        },
+        function(data){
+            if (data == 1)
+              if (is_checked)
+                $($this).parent().siblings('span.status_in_words').html('Activated');
+            else
+                $($this).parent().siblings('span.status_in_words').html('Deactivated');
+        }
+        )
+    });
+});
+</script>
+<style type="text/css">
+div.subj {
+    font-size: 1.5em;
+}
+span.status_in_words {
+    line-height: 2em;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 21px;
+    margin-left: 10px;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+</style>

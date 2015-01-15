@@ -1,0 +1,149 @@
+{% import 'macro/form.twig' as mac %}
+
+<div id="cp_left">
+    <div class="registration">
+        <div class="registration_form">
+
+                <h1>{{ member.user.first_name }} {{ member.user.last_name }}</h1>
+                <div class="members_nprofit">
+                    <ul>
+                    {% for nonprofit in member.nonprofits %}
+                        <li><a href="#">{{ nonprofit.name }} <span class="members_title_heading2">({{ nonprofit.running_points }})</span></a></li>
+                    {% endfor %}
+                    </ul>
+                    <div class="edit_btn"><span>(Edit)</span><img src="/assets/img/england_bg.gif"></div>
+                </div>
+                <div class="member_person_div">
+                    <fieldset>
+                        <div class="member_person_div">
+                            <div class="member_person_div_image"><a href="/my/homepage"><img src="{{ img_filename }}"></a></div>
+                            <div class="member_person_div2">
+                                <div class="member_person_div2_heading1">Current Points : <span>{{ member.running_points }}</span></div>
+                                <div class="member_person_div2_heading2">Email: {{ member.user.email }}</div>
+                            </div>
+                            <div class="member_person_div2_heading4">
+                                Challenges:   <span>5845</span>            
+                                Shopping:  <span>5845</span>                 
+                                New members: <span>5845</span> 
+                                <br>
+                                Misc:  <span>5845</span>                   
+                                TOTAL:  <span>1089</span>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                
+                <div class="clearBoth"></div>
+
+            {{ form_open() }}
+
+                <fieldset>
+                    <legend><cufon style="width: 53px; height: 16px;" alt="Choose " class="cufon cufon-canvas"><canvas style="width: 64px; height: 15px; top: 0px; left: 0px;" height="15" width="64"></canvas><cufontext>Choose </cufontext></cufon><cufon style="width: 34px; height: 16px;" alt="Your " class="cufon cufon-canvas"><canvas style="width: 44px; height: 15px; top: 0px; left: 0px;" height="15" width="44"></canvas><cufontext>Your </cufontext></cufon><cufon style="width: 32px; height: 16px;" alt="Non " class="cufon cufon-canvas"><canvas style="width: 43px; height: 15px; top: 0px; left: 0px;" height="15" width="43"></canvas><cufontext>Non </cufontext></cufon><cufon style="width: 37px; height: 16px;" alt="Profit" class="cufon cufon-canvas"><canvas style="width: 46px; height: 15px; top: 0px; left: 0px;" height="15" width="46"></canvas><cufontext>Profit</cufontext></cufon></legend>
+                    <div class="rf_row">
+                        <span class="rf_label"><label for="">Name:</label></span>
+                        <input name="nprofit_name" class="input_text" value="{{ value.nprofit_name }}" type="text" data-focus="1" required aria-required="true"><input id="btn_get_data" type="button" value="get data">
+                        <span id="msg_get_data"></span>
+                        {{ errmsg.nprofit_name ? "<div class='flderrmsg'>#{ errmsg.nprofit_name }</div>" : '' }} 
+                    </div>
+                    <div class="rf_row">
+                        <span class="rf_label"><label for="">Country:</label></span>
+                        {{ mac.select_with_grouping('nprofit_country', countries_with_grouping, value.nprofit_country, 'country') }}
+                    </div>
+                    <div class="rf_row">
+                        <span class="rf_label"><label for="">City:</label></span>
+                        <input name="nprofit_city" class="input_text" value="{{ value.nprofit_city }}" type="text">
+                    </div>
+                    <div class="rf_row">
+                        <span class="rf_label"><label for="">State:</label></span>
+                        <input name="nprofit_state" class="input_text" value="{{ value.nprofit_state }}" type="text">
+                    </div>
+                    <div class="actions">
+                       <button class="post_btn"></button>
+                    </div>             
+                </fieldset>
+
+            {{ form_close() }}
+
+        </div>
+    </div>
+</div>
+{% include "right-new-members.twig" %}
+<div class="clear"></div>
+<div><img src="/assets/img/sponser_wanted.gif"></div>
+<script type="text/javascript">
+on_ready.push(function()
+{
+    window.us_states_arr = $.map(us_states, function (value, key) { return value; });
+    $('#form_nprofit_country').change(function(){
+        call_set_autocomplete($('#form_nprofit_state'), $(this).val());
+    });
+
+    window.nonprofit_arr = [];
+    {% for np in nonprofit_arr %}
+        window.nonprofit_arr.push( $('<div/>').html("{{ np }}").text() );
+    {% endfor %}
+    set_autocomplete($('#form_nprofit_name'), nonprofit_arr);
+
+    $('#form_nprofit_name')
+        .select()
+        .keyup(function(){
+            $('#btn_get_data').show();
+        }).focus(function(){
+            $('#msg_get_data').html("");
+        });
+
+    $('#btn_get_data')
+        .hide()
+        .click(function(){
+            $('#msg_get_data').html( get_nonprofit_address() );
+            $('#form_nprofit_country').focus();
+        });
+
+    get_nonprofit_address();
+});
+
+function call_set_autocomplete(obj, val)
+{
+    switch (val)
+    {
+        case "United States":
+            set_autocomplete(obj, us_states_arr);
+            break;
+
+        case "":
+        default:
+            set_autocomplete(obj, []);
+            break;
+    }
+}
+
+function get_nonprofit_address()
+{
+    $.ajax({
+        type: "GET",
+        async: false,
+        url: '/ajax/get_nonprofit_address', 
+        data: { nonprofit_name: $('#form_nprofit_name').val() }, 
+        success: function(data){
+            if (jQuery.isEmptyObject(data))
+            {
+                // Writable
+                $('#form_nprofit_country').prop('disabled', false).val("");
+                $('#form_nprofit_state').prop('disabled', false).val("");
+                $('#form_nprofit_city').prop('disabled', false).val("");
+                parent.msg = "new"; // no address data
+            }
+            else
+            {
+                // Protected
+                $('#form_nprofit_state').prop('disabled', true).val(data.state);
+                $('#form_nprofit_city').prop('disabled', true).val(data.city);
+                $('#form_nprofit_country').prop('disabled', true).val(data.country);
+                parent.msg = ""; // with address data
+            }
+        }, 
+        dataType: 'json'
+    });
+    return msg;
+}
+</script>

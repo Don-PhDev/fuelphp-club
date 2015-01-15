@@ -1,0 +1,575 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+        <meta name="description" content=""/>
+        <meta name="keywords" content=""/>
+        
+        <title>ziceinclude&trade; admin version 1.5 online</title>
+
+        <!-- Link shortcut icon-->
+        <link rel="shortcut icon" type="image/ico" href="/assets/vendor/zice/images/favicon2.ico"/> 
+
+        <!-- Link css-->
+        <link rel="stylesheet" type="text/css" href="/assets/vendor/zice/css/zice.style.css"/>
+
+		
+        <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="/assets/vendor/zice/components/flot/excanvas.min.js"></script><![endif]-->  
+		
+        <script type="text/javascript" src="/assets/vendor/zice/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/ui/jquery.ui.min.js"></script> 
+        <script type="text/javascript" src="/assets/vendor/zice/components/ui/jquery.autotab.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/ui/timepicker.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/colorpicker//assets/vendor/zice/js/colorpicker.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/checkboxes/iphone.check.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/elfinder//assets/vendor/zice/js/elfinder.full.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/datatables/dataTables.min.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/datatables/ColVis.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/scrolltop/scrolltopcontrol.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/fancybox/jquery.fancybox.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/jscrollpane/mousewheel.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/jscrollpane/mwheelIntent.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/jscrollpane/jscrollpane.min.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/spinner/ui.spinner.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/tipsy/jquery.tipsy.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/editor/jquery.cleditor.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/chosen/chosen.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/confirm/jquery.confirm.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/validationEngine/jquery.validationEngine.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/validationEngine/jquery.validationEngine-en.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/vticker/jquery.vticker-min.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/sourcerer/sourcerer.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/fullcalendar/fullcalendar.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/flot/flot.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/flot/flot.pie.min.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/flot/flot.resize.min.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/flot/graphtable.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/uploadify/swfobject.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/uploadify/uploadify.js"></script>        
+        <script type="text/javascript" src="/assets/vendor/zice/components/checkboxes/customInput.jquery.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/effect/jquery-jrumble.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/filestyle/jquery.filestyle.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/placeholder/jquery.placeholder.js"></script>
+		<script type="text/javascript" src="/assets/vendor/zice/components/Jcrop/jquery.Jcrop.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/imgTransform/jquery.transform.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/webcam/webcam.js"></script>
+		<script type="text/javascript" src="/assets/vendor/zice/components/rating_star/rating_star.js"></script>
+		<script type="text/javascript" src="/assets/vendor/zice/components/dualListBox/dualListBox.js"></script>
+		<script type="text/javascript" src="/assets/vendor/zice/components/smartWizard/jquery.smartWizard.min.js"></script>
+		<script type="text/javascript" src="/assets/vendor/zice/components/maskedinput/jquery.maskedinput.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/highlightText/highlightText.js"></script>
+		<script type="text/javascript" src="/assets/vendor/zice/components/elastic/jquery.elastic.source.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/js/jquery.cookie.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/js/zice.custom.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+    	// Smart Wizard     	
+  		$('#wizardvalidate').smartWizard({transitionEffect:'slideleft',onLeaveStep:leaveAStepCallback,onFinish:onFinishCallback,enableFinishButton:true});
+
+      function leaveAStepCallback(obj){
+        var step_num= obj.attr('rel');
+        return validateSteps(step_num);
+      }
+      
+      function onFinishCallback(){
+       if(validateAllSteps()){
+        $('form').submit();
+       }
+      }
+            
+		});
+	   
+    function validateAllSteps(){
+       var isStepValid = true;
+       
+       if(validateStep1() == false){
+         isStepValid = false;
+         $('#wizardvalidate').smartWizard('setError',{stepnum:1,iserror:true});         
+       }else{
+         $('#wizardvalidate').smartWizard('setError',{stepnum:1,iserror:false});
+       }
+
+	// add more if you want to validateStep 2
+       if(validateStep2() == false){
+         isStepValid = false;
+         $('#wizardvalidate').smartWizard('setError',{stepnum:3,iserror:true});         
+       }else{
+         $('#wizardvalidate').smartWizard('setError',{stepnum:3,iserror:false});
+       }
+       
+       if(validateStep3() == false){
+         isStepValid = false;
+         $('#wizardvalidate').smartWizard('setError',{stepnum:3,iserror:true});         
+       }else{
+         $('#wizardvalidate').smartWizard('setError',{stepnum:3,iserror:false});
+       }
+       
+       if(!isStepValid){
+          $('#wizardvalidate').smartWizard('showMessage','Please correct the errors in the steps and continue');
+       }
+              
+       return isStepValid;
+    } 	
+		
+		
+		function validateSteps(step){
+		  var isStepValid = true;
+      // validate step 1
+      if(step == 1){
+        if(validateStep1() == false ){
+          isStepValid = false; 
+          $('#wizardvalidate').smartWizard('showMessage','Please correct the errors in step'+step+ ' and click next.');
+          $('#wizardvalidate').smartWizard('setError',{stepnum:step,iserror:true});         
+        }else{
+          $('#wizardvalidate').smartWizard('setError',{stepnum:step,iserror:false});
+        }
+      }
+
+      // validate step 2
+      if(step == 2){
+        if(validateStep2() == false ){
+          isStepValid = false; 
+          $('#wizardvalidate').smartWizard('showMessage','Please correct the errors in step'+step+ ' and click next.');
+          $('#wizardvalidate').smartWizard('setError',{stepnum:step,iserror:true});         
+        }else{
+          $('#wizardvalidate').smartWizard('setError',{stepnum:step,iserror:false});
+        }
+      }
+      
+      
+      // validate step3
+      if(step == 3){
+        if(validateStep3() == false ){
+          isStepValid = false; 
+          $('#wizardvalidate').smartWizard('showMessage','Please correct the errors in step'+step+ ' and click next.');
+          $('#wizardvalidate').smartWizard('setError',{stepnum:step,iserror:true});         
+        }else{
+          $('#wizardvalidate').smartWizard('setError',{stepnum:step,iserror:false});
+        }
+      }
+      
+      return isStepValid;
+    }
+		
+		function validateStep1(){
+       var isValid = true; 
+       // Validate Username
+       var un = $('#username').val();
+       if(!un && un.length <= 0){
+         isValid = false;
+         $('#msg_username').html('Please fill username').show();
+       }else{
+         $('#msg_username').html('').hide();
+       }
+       
+       // validate password
+       var pw = $('#password').val();
+       if(!pw && pw.length <= 0){
+         isValid = false;
+         $('#msg_password').html('Please fill password').show();         
+       }else{
+         $('#msg_password').html('').hide();
+       }
+       
+       // validate confirm password
+       var cpw = $('#cpassword').val();
+       if(!cpw && cpw.length <= 0){
+         isValid = false;
+         $('#msg_cpassword').html('Please fill confirm password').show();         
+       }else{
+         $('#msg_cpassword').html('').hide();
+       }  
+       
+       // validate password match
+       if(pw && pw.length > 0 && cpw && cpw.length > 0){
+         if(pw != cpw){
+           isValid = false;
+           $('#msg_cpassword').html('Password mismatch').show();            
+         }else{
+           $('#msg_cpassword').html('').hide();
+         }
+       }
+       return isValid;
+    }
+
+
+    function validateStep2(){
+      var isValid = true;    
+       // Validate firstname
+       var fname = $('#firstname').val();
+       if(!fname && fname.length <= 0){
+         isValid = false;
+         $('#msg_firstname').html('Please fill firstname').show();
+       }else{
+         $('#msg_username').html('').hide();
+       }
+       
+       // validate lastname
+       var lname = $('#lastname').val();
+       if(!lname && lname.length <= 0){
+         isValid = false;
+         $('#msg_lastname').html('Please fill lastname').show();         
+       }else{
+         $('#msg_lastname').html('').hide();
+       }
+
+       // validate gender
+       var gender = $('#gender').val();
+       if(!gender && gender.length <= 0){
+         isValid = false;
+         $('#msg_gender').html('Please choose gender').show();         
+       }else{
+         $('#msg_gender').html('').hide();
+       }
+
+	    return isValid;
+    }
+    
+    function validateStep3(){
+      var isValid = true;    
+      //validate email  email
+      var email = $('#email').val();
+       if(email && email.length > 0){
+         if(!isValidEmailAddress(email)){
+           isValid = false;
+           $('#msg_email').html('Email is invalid').show();           
+         }else{
+          $('#msg_email').html('').hide();
+         }
+       }else{
+         isValid = false;
+         $('#msg_email').html('Please enter email').show();
+       }       
+      return isValid;
+    }
+    
+    // Email Validation
+    function isValidEmailAddress(emailAddress) {
+      var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+      return pattern.test(emailAddress);
+    } 
+		
+		
+</script>
+		</head>        
+        <body class="dashborad">        
+        <div id="alertMessage" class="error"></div>
+		<!-- Header -->
+        <div id="header">
+                <div id="account_info"> 
+                    <img src="/assets/vendor/zice/images/avatar.png" alt="Online" class="avatar"/>
+					<div class="setting"><b>Welcome,</b> <b class="red">John Doe</b><img src="/assets/vendor/zice/images/gear.png" class="gear"  alt="Profile Setting" >
+                        <ul class="subnav ">
+                            <li><a href="#">Dashboard</a></li>
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Setting</a></li>
+                            <li><a href="#">Reset password</a></li>
+							<br class="clear"/>
+                        </ul>
+                  </div>
+					<div class="logout" title="Disconnect"><b >Logout</b> <img src="/assets/vendor/zice/images/connect.png" name="connect" class="disconnect" alt="disconnect" ></div> 
+                </div>
+            </div><!-- End Header -->
+			<div id="shadowhead"></div>
+
+              <div id="left_menu">
+                    <ul id="main_menu" class="main_menu">
+                      <li class="limenu" ><a href="dashboard.html"><span class="ico gray shadow home" ></span><b>Dashboard</b></a></li>
+                      <li class="limenu select" ><a href="#" ><span class="ico gray shadow window"></span><b>Form elements</b></a>
+                        <ul>
+                          <li ><a href="form.html"> basic form </a></li>
+                          <li ><a href="vform.html"> validation </a></li>
+                          <li ><a href="wizard.html"> wizard </a></li>
+                        </ul>
+                      </li>
+                      <li class="limenu" ><a href="#"><span class="ico gray  dimensions" ></span><b>Sample pages</b></a>
+                        <ul>
+                          <li ><a href="profile.html"> Profile setting </a></li>
+                          <li ><a href="conversation.html"> conversation</a></li>
+                          <li ><a href="imagesEditor.html"> Images Editor </a></li>
+                          <li ><a href="barcode.html"> barcode </a></li>
+                          <li ><a href="messages.html"> messages </a></li>
+                          <li ><a href="grid.html"> Grid System </a></li>
+                        </ul>
+                      </li>
+					  <li class="limenu" ><a href="ajax.html"><span class="ico gray shadow   encrypt"></span><b>Sample ajax</b> </a></li>
+                      <li class="limenu" ><a href="table.html"><span class="ico gray shadow  spreadsheet"></span><b>Tables</b> </a></li>
+                      <li class="limenu" ><a href="gallery.html"><span class="ico gray shadow pictures_folder"></span><b>Gallery </b></a></li>
+                      <li class="limenu" ><a href="#"><span class="ico gray shadow stats_lines"></span><b>Graph and Charts</b> </a>
+                        <ul>
+                          <li><a href="modalchartLive.html" class="pop_box">live chart </a></li>
+                          <li><a href="chart.html">all chart</a></li>
+                        </ul>
+                      </li>
+                      <li class="limenu" ><a href="filemanager.html"><span class="ico gray shadow  file"></span><b>File manager </b></a></li>
+                      <li class="limenu" ><a href="calendar.html"><span class="ico gray shadow calendar"></span><b>Calendar </b></a></li>
+                      <li class="limenu" ><a href="typography.html"><span class="ico gray  shadow paragraph_align_left"></span><b>Typography</b></a></li>
+                      <li class="limenu" ><a href="inelement.html"><span class="ico gray shadow abacus"></span><b>Interface elements </b></a></li>
+                      <li class="limenu" ><a href="map.html"><span class="ico gray shadow  location"></span><b>Map location </b></a></li>
+                      <li class="limenu" ><a href="icon.html"><span class="ico gray  shadow satellite"></span><b>Icon and Button </b></a></li>
+					  <li class="limenu" ><a href="404.html"><span class="ico gray  shadow firewall"></span><b>Error Pages</b></a></li>
+                    </ul>
+              </div>
+
+            
+            <div id="content">
+                <div class="inner">
+					<div class="topcolumn">
+						<div class="logo"></div>
+                            <ul id="shortcut">
+                                <li> <a href="#" title="Back To home"> <img src="/assets/vendor/zice/images/icon/shortcut/home.png" alt="home"/><strong>Home</strong> </a> </li>
+                                <li> <a href="#" title="Website Graph"> <img src="/assets/vendor/zice/images/icon/shortcut/graph.png" alt="graph"/><strong>Graph</strong> </a> </li>
+                                <li> <a href="#" title="Setting" > <img src="/assets/vendor/zice/images/icon/shortcut/setting.png" alt="setting" /><strong>Setting</strong></a> </li> 
+                                <li> <a href="#" title="Messages"> <img src="/assets/vendor/zice/images/icon/shortcut/mail.png" alt="messages" /><strong>Message</strong></a><div class="notification" >10</div></li> 
+                            </ul>
+					</div>
+                    <div class="clear"></div> 
+                      
+					<!-- full width -->
+                    <div class="widget">
+                        <div class="header"><span><span class="ico gray wizard"></span>Wizard step</span>
+                            <div class="searchBox">
+                            <div class="searchAutocomplete"></div>
+                            <div class="searchText">
+                                <form action="http://www.google.com" method="GET">
+                                    <input  type="text"  nane="s" id="sAtcom"placeholder="Live Search..."/>
+                                </form>
+                            </div>
+                            </div>
+						</div><!-- End header -->	
+                        <div class="content" >
+   
+
+		<!-- Smart Wizard -->
+  		<div id="wizard" class="swMain">
+  			<ul>
+  				<li><a href="#step-1">
+                <label class="stepNumber">1</label>
+                <span class="stepDesc">Step 1<br />
+                   <small>Step 1 description</small>
+                </span>
+            </a></li>
+  				<li><a href="#step-2">
+                <label class="stepNumber">2</label>
+                <span class="stepDesc">Step 2<br />
+                   <small>Step 2 description</small>
+                </span>
+            </a></li>
+  				<li><a href="#step-3">
+                <label class="stepNumber">3</label>
+                <span class="stepDesc">Step 3<br />
+                   <small>Step 3 description</small>
+                </span>                   
+             </a></li>
+  				<li><a href="#step-4">
+                <label class="stepNumber">4</label>
+                <span class="stepDesc">Step 4<br />
+                   <small>Step 4 description</small>
+                </span>                   
+            </a></li>
+  			</ul>
+  			<div id="step-1">
+			            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+            </p>
+									
+
+                           
+			
+			</div>
+  			<div id="step-2">
+			            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+
+            </p>
+					
+			
+			</div>                      
+  			<div id="step-3">
+			            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+            </p>
+
+			</div>
+  			<div id="step-4">
+			            <p><b>Lorem ipsum dolor sit amet</b>, consectetur adipisicing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+			
+			</div>
+  		</div><!-- End SmartWizard Content -->  		
+				
+                            
+                            <!-- clear fix -->
+							<div class="clear"></div>
+
+                        </div><!-- End content -->
+                    </div><!-- End full width -->
+
+
+					<!-- full width -->
+                    <div class="widget">
+                        <div class="header"><span><span class="ico gray wizard"></span>Wizard Validate</span>
+						</div><!-- End header -->	
+                        <div class="content" >
+   
+
+
+<form action="#" method="POST">
+  <input type='hidden' name="issubmit" value="1">
+		<!-- Smart Wizard -->
+  		<div id="wizardvalidate" class="swMain">
+  			<ul>
+  				<li><a href="#step-1">
+                <label class="stepNumber">1</label>
+                <span class="stepDesc">
+                   Account <br />
+                   <small>account details</small>
+                </span>
+            </a></li>
+  				<li><a href="#step-2">
+                <label class="stepNumber">2</label>
+                <span class="stepDesc">
+                   Profile <br />
+                   <small>profile details</small>
+                </span>
+            </a></li>
+  				<li><a href="#step-3">
+                <label class="stepNumber">3</label>
+                <span class="stepDesc">
+                   Contact <br />
+                   <small>contact details</small>
+                </span>
+             </a></li>
+  				<li><a href="#step-4">
+                <label class="stepNumber">4</label>
+                <span class="stepDesc">
+                   Other <br />
+                   <small>other details</small>
+                </span>
+            </a></li>
+  			</ul>
+  			<div id="step-1" style="width:100%;">	
+            <h2 class="StepTitle">Step 1: Account Details</h2>
+
+                                    <div class="section last">
+                                    <label> Login  Account  <small>Text custom</small></label>
+                                    <div>
+                                    <input type="text"  placeholder="Username" name="username" id="username"  class="medium"  /><label id="msg_username" class="red"></label>
+                                    <span class="f_help"> Username login or register. </span> 
+                                    </div>
+                                    <div>
+                                    <input type="password" placeholder="Password" class="medium"  name="password" id="password"  /><label id="msg_password" class="red"></label>
+                                    </div>
+                                    <div>
+                                    <input type="password" placeholder="Confirm Password" class="medium"  name="cpassword" id="cpassword"  /><label id="msg_cpassword" class="red"></label>
+                                    </div>
+									</div>
+		
+        </div>
+  			<div id="step-2" style="width:100%;">
+            <h2 class="StepTitle">Step 2: Profile Details</h2>	
+
+                                    <div class="section">
+                                    <label> First Name  <small>Text custom</small></label>
+      
+										<div>
+										<input type="text" placeholder="Firstname" class="medium"  name="firstname" id="firstname"  /><label id="msg_firstname" class="red"></label>
+										</div>
+									</div>
+                                    <div class="section">
+                                    <label> Last Name <small>Text custom</small></label>
+      
+										<div>
+										<input type="text" placeholder="Lastname" class="medium"  name="lastname" id="lastname"  /><label id="msg_lastname" class="red"></label>
+										</div>
+									</div>
+                                    <div class="section last">
+                                    <label> Gender  <small>Text custom</small></label>
+      
+										<div>
+						<select id="gender" name="gender" class="txtBox">
+                          <option value="">-select-</option>
+                          <option value="Female">Female</option>
+                          <option value="Male">Male</option>                 
+                        </select><label id="msg_gender" class="red"></label>
+										</div>
+									</div>
+     
+        </div>                      
+  			<div id="step-3" style="width:100%;">
+            <h2 class="StepTitle">Step 3: Contact Details</h2>	
+
+                                    <div class="section">
+                                    <label> Email  Account  <small>Text custom</small></label>
+      
+										<div>
+										<input type="text" placeholder="Email" class="medium"  name="email" id="email"  /><label id="msg_email" class="red"></label>
+										</div>
+									</div>
+                                    <div class="section">
+                                    <label> Phone <small>Text custom</small></label>
+      
+										<div>
+										<input type="text" placeholder="Phone" class="medium"  name="phone" id="phone"  /><label id="msg_phone" class="red"></label>
+										</div>
+									</div>
+                                    <div class="section last">
+                                    <label> Address  <small>Text custom</small></label>
+      
+										<div>
+										<textarea  placeholder="Address" class="medium"  name="phone" id="phone"  ></textarea><label id="msg_address" class="red"></label>
+										</div>
+									</div>
+									              				          
+        </div>
+  			<div id="step-4">
+            <h2 class="StepTitle">Step 4: Other Details</h2>	
+
+<p>
+<b>Lorem ipsum dolor sit amet</b>, consectetur adipisicing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+
+               			
+        </div>
+  		</div>
+<!-- End SmartWizard Content -->  		
+</form> 		
+				
+                            
+                            <!-- clear fix -->
+							<div class="clear"></div>
+
+                        </div><!-- End content -->
+                    </div><!-- End full width -->
+                    
+					<!-- clear fix -->
+					<div class="clear"></div>
+
+                    <div id="footer"> &copy; Copyright 2012 <span class="tip"><a  href="#" title="Zice Admin" >Your Company Name</a> </span> </div>
+
+                </div> <!--// End inner -->
+              </div> <!--// End content --> 
+</body>
+</html>

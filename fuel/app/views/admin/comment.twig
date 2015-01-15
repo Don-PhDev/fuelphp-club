@@ -1,0 +1,62 @@
+<!-- full width -->
+<div class="widget">
+    <div class="header"><span><span class="ico gray home"></span> What's New Comments </span>{# include "0021.live_search.twig" #}</div><!-- End header -->
+    <div class="content">
+
+
+    <!-- Half width column-->
+    <div class="widgets">
+
+        <div class="oneTwo">
+            <br>
+            {{ form_open() }}
+                <div class="section">
+                    <label> Title <small>Enter title of comment for members</small></label>
+                    <div>
+                        <input type="text" name="title_members" class="full" data-focus="1" aria-required="true" required value="{{ comments[1].title }}">
+                        {{ errmsg.title_members ? "<div class='flderrmsg'>#{ errmsg.title_members }</div>" : '' }}
+                    </div>
+                    <label> Members <small>Enter text to show on homepage</small></label>
+                    <div>
+                        <textarea type="text" name="members" class="full" aria-required="true" required>{{ comments[1].message }}</textarea>
+                        {{ errmsg.members ? "<div class='flderrmsg'>#{ errmsg.members }</div>" : '' }}
+                    </div>
+                </div>
+
+                <div class="section">
+                    <label> Title <small>Enter title of comment for non profits</small></label>
+                    <div>
+                        <input type="text" name="title_nonprofits" class="full" aria-required="true" required value="{{ comments[2].title }}">
+                        {{ errmsg.title_nonprofits ? "<div class='flderrmsg'>#{ errmsg.title_nonprofits }</div>" : '' }}
+                    </div>
+                    <label> Non Profits <small>Enter text to show on homepage</small></label>
+                    <div>
+                        <textarea type="text" name="nonprofits" class="full" aria-required="true" required>{{ comments[2].message }}</textarea>
+                        {{ errmsg.nonprofits ? "<div class='flderrmsg'>#{ errmsg.nonprofits }</div>" : '' }}
+                    </div>
+                </div>
+
+                <div class="section">
+                    <label> Title <small>Enter title of comment for shopping</small></label>
+                    <div>
+                        <input type="text" name="title_shopping" class="full" aria-required="true" required value="{{ comments[3].title }}">
+                        {{ errmsg.title_shopping ? "<div class='flderrmsg'>#{ errmsg.title_shopping }</div>" : '' }}
+                    </div>
+                    <label> Shopping <small>Enter text to show on homepage</small></label>
+                    <div>
+                        <textarea type="text" name="shopping" class="full" aria-required="true" required>{{ comments[3].message }}</textarea>
+                        {{ errmsg.shopping ? "<div class='flderrmsg'>#{ errmsg.shopping }</div>" : '' }}
+                    </div>
+                </div>
+                <div class="section last">
+                    <div> <a class="uibutton loading" rel="1" href="submit" title="Processing"> save</a> </div>
+                </div>
+            {{ form_close() }}
+        </div>
+        </div><!-- End Half width column -->
+
+        <!-- clear fix -->
+        <div class="clear"></div>
+        
+    </div><!-- End content -->
+</div><!-- End full width -->

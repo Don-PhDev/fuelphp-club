@@ -1,0 +1,118 @@
+/**
+ * my.css
+ */
+
+.one-half { width: 50% }
+.one-fourth { width: 25% }
+.one-third { width: 33% }
+
+.hidden_submit {
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.redinput {
+    background-color: #FFB0B0 !important;
+}
+
+.floatLeft {
+    float: left;
+}
+
+.flderrmsg {
+    color: #900000;
+    background-color: #FFBBBB;
+    padding: 6px 12px;
+    border-radius: 4px 4px 4px 4px;
+    font-style: italic;
+}
+
+.fldokmsg {
+    color: black;
+    background-color: #BBFFBB;
+    padding: 6px 12px;
+    border-radius: 4px 4px 4px 4px;
+    font-style: italic;
+}
+
+div.alert-message {
+    border: 1px solid #DDDDDD;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 1px 4px #CCCCCC;
+    padding: 6px 25px;
+    font-style: italic;
+}
+div.alert-message p {
+    display: block;
+    margin: 0 auto;
+}
+div.success {
+    background-color:#E2FFE2;
+    color:green;
+}
+div.error {
+    background-color:#FFD9D9;
+    color:#840000;
+}
+
+hr.thinfade {
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+}
+
+div.avartar img {
+    min-width: 180px;
+    max-width: 180px;
+}
+
+div.header a.uibutton {
+    float: right;
+    margin: 7px 7px 7px 0;
+}
+
+div.twoImageInput {
+    float: left;
+    padding: 0 25px;
+}
+
+.nice_table tr:hover {
+    background-color: #D8D8D9;
+    cursor: pointer;
+}
+tr.row_light {
+    background-color: #FFFFFF;
+}
+tr.row_dark {
+    background-color: #F8F8F8;
+}
+table.nice_table {
+    border-collapse: collapse;
+    margin-left: 1px;
+    margin-top: -11px;
+}
+table.nice_table, table.nice_table th, table.nice_table td {
+    border: 1px solid #98BF21;
+}
+
+.redBtn {
+    border-radius: 5px;
+    border-color: red;
+    background-color: pink;
+}
+
+.item-deleted {
+    color: red;
+}
+.item-old-deleted {
+    color: #cccccc;
+    text-decoration: line-through;
+}
+
+/* eof */

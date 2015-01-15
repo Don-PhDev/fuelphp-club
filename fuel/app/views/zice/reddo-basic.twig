@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+    <title>{{ title }} &raquo; Admin</title>
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="/assets/vendor/zice/css/zice.style.css" />
+    <link rel="stylesheet" href="/assets/vendor/zice/css/icon.css" />
+    <link rel="stylesheet" href="/assets/vendor/zice/components/tipsy/tipsy.css" media="all"/>
+<style type="text/css">
+html {
+    background-image: none;
+}
+label.iPhoneCheckLabelOn span {
+    padding-left:0px
+}
+#versionBar {
+    background-color:#212121;
+    position:fixed;
+    width:100%;
+    height:35px;
+    bottom:0;
+    left:0;
+    text-align:center;
+    line-height:35px;
+    z-index:11;
+    -webkit-box-shadow: black 0px 10px 10px -10px inset;
+    -moz-box-shadow: black 0px 10px 10px -10px inset;
+    box-shadow: black 0px 10px 10px -10px inset;
+}
+.copyright{
+    text-align:center; font-size:10px; color:#CCC;
+}
+.copyright a{
+    color:#A31F1A; text-decoration:none
+}    
+</style>
+{% for style, version in stylev %}
+    <link href="/assets/vendor/zice/css/{{ style }}?v={{ version }}" rel="stylesheet" media="all">
+{% endfor %}
+</head>
+<body >
+
+<!-- Flash Messages -->
+{% if flash_okhide %}
+{% if _ADMINISTRATOR_ %}
+    <div class="alert-message success okhidelow" onclick="hide_flash(this, 300)"><p>{{ flash_okhide|join('</p><p>') }}</p></div>
+{% else %}
+    <div class="alert-message success okhide" onclick="hide_flash(this, 300)"><p>{{ flash_okhide|join('</p><p>') }}</p></div>
+{% endif %}
+{% endif %}
+
+{% if flash_success %}
+    <div class="alert-message success" onclick="hide_flash(this, 300)"><p>{{ flash_success|join('</p><p>') }}</p></div>
+{% endif %}
+
+{% if flash_error %}
+    <div class="alert-message error" onclick="hide_flash(this, 300)"><p>{{ flash_error|join('</p><p>') }}</p></div>
+{% endif %}
+         
+<div id="alertMessage"></div>
+<div id="successLogin"></div>
+<div class="text_success"><img src="/assets/vendor/zice/images/loadder/loader_green.gif"  alt="ziceAdmin" /><span>Please wait</span></div>
+
+{% block content %}
+    {{ content }}
+{% endblock %}
+
+<!--Login div-->
+<div class="clear"></div>
+<div id="versionBar" >
+  <div class="copyright" > &copy; Copyright 2013  All Rights Reserved <span class="tip"><a  href="#" title="Club4Causes" >Club4Causes</a> </span> </div>
+  <!-- // copyright-->
+</div>
+<!-- Link JScript-->
+<script type="text/javascript" src="/assets/vendor/zice/js/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/vendor/zice/components/effect/jquery-jrumble.js"></script>
+<script type="text/javascript" src="/assets/vendor/zice/components/ui/jquery.ui.min.js"></script>     
+<script type="text/javascript" src="/assets/vendor/zice/components/tipsy/jquery.tipsy.js"></script>
+<script type="text/javascript" src="/assets/vendor/zice/components/checkboxes/iphone.check.js"></script>
+<script type="text/javascript" src="/assets/vendor/zice/js/login.js"></script>
+{% for script, version in scriptv %}
+<script src="/assets/vendor/zice/js/{{ script }}?v={{ version }}" type="text/javascript"></script>
+{% endfor %}
+</body>
+</html>

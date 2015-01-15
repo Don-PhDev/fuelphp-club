@@ -1,0 +1,105 @@
+<!-- full width -->
+<div class="widget">
+    <div class="header"><span><span class="ico gray administrator"></span>Add Donation By {{ donor.name }}</span>
+        <a class="uibutton submit_form" href="/admin/donor">Back to Donors</a>
+    </div>
+    <div class="content" >
+
+        <!--<form id="validation_demo" action="">-->
+        {{ form_open({"id": "validation_demo"}) }}
+        <input type="hidden" name="recipient_id" value="">
+
+        <!-- Third / Half column-->
+        <div class="widgets">
+            <div class="oneThree">
+                <div class="profileSetting twoImageInput" >
+                    <div class="avartar"><img data-upload="image_filename" src="/web_data/donor/{{ donor.image_filename }}" width="180" height="180" alt="Donor" title="Donor" /></div>
+                    <h4 align="center">{{ donor.name }}</h4>
+                </div>
+            </div>
+
+            <div class="twoOne">
+                <div class="section ">
+                    <label> Recipient<small>Organization receiving the endowment</small></label>   
+                    <div> 
+                        <input type="text" class="input_search validate[required] large" name="recipient" value="{{ value.recipient }}" data-focus="1"  data-clicked="set_recipient" data-ajax="/admin/ajax/search/nonprofit/" autocomplete="off">
+                        {{ errmsg.recipient ? "<div class='flderrmsg'>#{ errmsg.recipient }</div>" : '' }}
+                    </div>
+                    <div id="recipient_search_result"></div>
+                </div>
+
+                <div class="section">
+                    <label> Amount <small>Amount of donation</small></label>
+                    <div>
+                        <input type="text" class="numeric validate[required]" name="amount" value="{{ value.amount }}" maxlength="8">
+                        {{ errmsg.amount ? "<div class='flderrmsg'>#{ errmsg.amount }</div>" : '' }}
+                    </div>
+                </div>
+
+                <div class="section last">
+                    <div>
+                      <a class="uibutton submit_form" >Submit</a>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- End Third / Half column-->
+        <button class="hidden_submit"></button>
+        {{ form_close() }}
+
+        <!-- clear fix -->
+        <div class="clear"></div>
+
+    </div><!-- End content -->
+</div><!-- End full width -->
+
+<script type="text/javascript">
+function admin_ajax_search_nonprofit(data, search_obj)
+{
+    $('#form_recipient_id').val("");
+
+    if (0 == data.length)
+        tbl = $('<div/>').html("");
+    else
+    {
+        tbl = $('<table/>').addClass('nice_table');
+        sw = true;
+        $.each(data, function(id, one_match){
+            if (sw)
+                row = $('<tr/>').attr('id', id).addClass('row_dark').append($('<td/>').html(one_match));
+            else
+                row = $('<tr/>').attr('id', id).addClass('row_light').append($('<td/>').html(one_match));
+            sw = !sw;
+
+            tbl.append(row)
+        })
+    }
+
+    offset = search_obj.offset();
+    width = search_obj.css('width');
+
+    sr = $('div#recipient_search_result');
+    sr.html(tbl).show();
+    sr.children('table').css({width: '100%'})
+    sr.css({
+        top: '-5px',
+        left: '-1px',
+        width: (parseInt(width) + 11) + 'px',
+        minWidth: (parseInt(width) + 11) + 'px'
+    });
+
+    /**
+     * Assign onclick event
+     */
+    $('tr').click(function(){
+        eval(search_obj.data('clicked') + "(" + this.id + ", \"" + $(this).children('td').text() + "\")");
+    });
+}
+
+function set_recipient(nonprofit_id, nonprofit_name)
+{
+    $('div#recipient_search_result').hide();
+    $('#form_recipient_id').val(nonprofit_id);
+    $('#form_recipient').val(nonprofit_name).focus();
+}
+</script>

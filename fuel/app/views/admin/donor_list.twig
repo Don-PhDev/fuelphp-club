@@ -1,0 +1,68 @@
+<!-- full width -->
+<div class="widget">
+    <div class="header"><span><span class="ico gray administrator"></span>Donor</span>
+        <a class="uibutton submit_form" href="/admin/donor/create">Add a Donor</a>
+    </div><!-- End header -->
+    <div class="content" >
+
+{% for donor in donors %}
+        <!-- Third / Half column-->
+        <div class="widgets quasi_form">
+            <div class="oneThree">
+                <div class="profileSetting twoImageInput" >
+                    <div class="avartar"><img src="{{ donor.image_filename ? "/web_data/donor/#{donor.image_filename}" : '/assets/img/no_image_2.jpg' }}" alt="Organization logo" title="Organization logo" /></div>
+                </div>
+                <div class="profileSetting twoImageInput" >
+                    <div class="avartar"><img src="{{ donor.organization_logo ? "/web_data/donor/#{donor.organization_logo}" : '/assets/img/no_image_2.jpg' }}" alt="Organization logo" title="Organization logo" /></div>
+                </div>
+            </div>
+
+            <div class="twoOne">
+                <div class="section ">
+                    <label> Full name</label>
+                    <div class="large">{{ donor.name }}</div>
+                </div>
+
+                <div class="section">
+                    <label> Organization</label>
+                    <div class="large">{{ donor.organization_name }}</div>
+                </div>
+
+                <div class="section ">
+                    <label> About</label>
+                    <div class="large">{{ donor.organization_text }}</div>
+                </div>
+
+                <div class="header"><span><span class="ico  gray spreadsheet"></span> Donations </span>
+                    <a class="uibutton confirm" href="/admin/donor/endow/{{ donor.id }}">Add Donation</a>
+                </div>
+                <table id="static" class="display dataTable">
+                    <thead>
+                      <tr role="row"><th>Non Profit</th><th>Endowment Date</th><th>Amount</th></tr>
+                    </thead>
+                    
+                    <tbody role="alert" aria-live="polite" aria-relevant="all">
+    {% for donation in donor.donations %}
+                      <tr>
+                        <td>{{ donation.nonprofit.name }}</td>
+                        <td>{{ donation.created_at|date("d M Y") }}</td>
+                        <td>{{ donation.amount|number_format(0, '', ',') }}</td>
+                      </tr>
+    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div><!-- End Third / Half column-->
+
+        <!-- clear fix -->
+        <div class="clear"></div>
+
+    {% if not loop.last %}
+        <hr class="thinfade">
+    {% endif %}
+
+{% endfor %}
+
+    </div><!-- End content -->
+</div><!-- End full width -->

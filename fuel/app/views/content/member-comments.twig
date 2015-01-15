@@ -1,0 +1,16 @@
+            <div class="why_i_chose">
+        {% if member.received_comments %}
+                <div class="today_share_heading">Comments about /to {{ member.user.first_name }}</div>
+
+            {% for comment in member.received_comments %}
+                <div class="quote"><blockquote>{{ comment.comment }}</blockquote>
+                    <div class="quotedby">{{ comment.authoring_member.user.first_name }} {{ comment.authoring_member.user.last_name }}</span></div>
+                    <div class="clearBoth"></div>
+                </div>
+            {% endfor %}
+            
+        {% else %}
+                <div class="today_share_heading">No comments yet.</div>
+        {% endif %}
+            
+            </div>

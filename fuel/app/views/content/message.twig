@@ -1,0 +1,22 @@
+        <h2>{{ title }}</h2>
+
+{% if message %}
+        <h4>{{ message }}</h4>
+{% endif %}
+
+{% if story_one %}
+        <div class="story">{{ story_one }}</div>
+{% endif %}
+
+        <div class="actions">
+{% if link_uri %}
+            <a class="button" href="{{ link_uri }}">{{ link_text }}</a>
+{% else %}
+            <button onclick="javascript:history.go(-1)">&laquo; Back</button>
+{% endif %}
+        </div>
+
+{% if story_two %}
+        <div class="story">{{ story_two }}</div>
+{% endif %}
+

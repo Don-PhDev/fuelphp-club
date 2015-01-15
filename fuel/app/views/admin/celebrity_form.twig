@@ -1,0 +1,91 @@
+<!-- full width -->
+<div class="widget">
+    <div class="header"><span><span class="ico gray administrator"></span>Celebrity</span>
+        <a class="uibutton submit_form" href="/admin/celebrities">Back to Celebrities</a>
+    </div>
+    <div class="content" >
+
+        <!--<form id="validation_demo" action="">-->
+        {{ form_open({"enctype": "multipart/form-data", "id": "validation_demo"}) }}
+
+        <!-- Third / Half column-->
+        <div class="widgets">
+            <div class="oneThree">
+                <div class="profileSetting twoImageInput" >
+                    <div class="avartar"><img data-upload="image_filename" src="/assets/img/no_image_2.jpg" width="180" height="180" alt="Celebrity" title="Celebrity" /></div>
+                    <div class="avartar">
+                        <input type="file" class="fileupload" name="image_filename" id="form_image_filename">
+                        {{ errmsg.image_filename ? "<div class='flderrmsg'>#{ errmsg.image_filename }</div>" : '' }}
+                        <p align="center"><span>CELEBRITY'S PICTURE</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="twoOne">
+                <div class="section ">
+                    <label> Name<small>Enter name of celebrity</small></label>   
+                    <div> 
+                        <input type="text" class="validate[required] large" name="name" value="{{ value.name }}" data-focus="1">
+                        {{ errmsg.name ? "<div class='flderrmsg'>#{ errmsg.name }</div>" : '' }}
+                    </div>
+                </div>
+
+                <div class="section ">
+                    <label> Charities / Foundations<small>Charities &amp; foundations supported</small></label>   
+                    <div> 
+                        <div><input type="text" class="validate[required] large" name="nonprofit[]"></div>
+                        {{ errmsg.nonprofit ? "<div class='flderrmsg'>#{ errmsg.nonprofit }</div>" : '' }}
+                    </div>
+                </div>
+
+                <div class="section ">
+                    <label> Supported Causes</label>   
+                    <div> 
+                        <div><input type="text" class="validate[required] large" name="cause[]"></div>
+                        {{ errmsg.cause ? "<div class='flderrmsg'>#{ errmsg.cause }</div>" : '' }}
+                    </div>
+                </div>
+
+                <div class="section ">
+                    <label> Fields</label>   
+                    <div> 
+                        <div><input type="text" class="validate[required] large" name="field[]"></div>
+                        {{ errmsg.field ? "<div class='flderrmsg'>#{ errmsg.field }</div>" : '' }}
+                    </div>
+                </div>
+
+                <div class="section last">
+                    <div>
+                      <a class="uibutton submit_form" >Submit</a>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- End Third / Half column-->
+        <button class="hidden_submit"></button>
+        {{ form_close() }}
+
+        <!-- clear fix -->
+        <div class="clear"></div>
+
+    </div><!-- End content -->
+</div><!-- End full width -->
+
+<script>
+window.autocomplete_arr = {};
+
+window.autocomplete_arr['nonprofit[]'] = [];
+{% for a in nonprofit_arr %}
+    window.autocomplete_arr['nonprofit[]'].push( $('<div/>').html("{{ a }}").text() );
+{% endfor %}
+
+window.autocomplete_arr['cause[]'] = [];
+{% for a in cause_arr %}
+    window.autocomplete_arr['cause[]'].push( $('<div/>').html("{{ a.cause }}").text() );
+{% endfor %}
+
+window.autocomplete_arr['field[]'] = [];
+{% for a in field_arr %}
+    window.autocomplete_arr['field[]'].push( $('<div/>').html("{{ a.field }}").text() );
+{% endfor %}
+</script>

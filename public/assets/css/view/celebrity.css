@@ -1,0 +1,225 @@
+.cp_inner {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+nav.alphabet {
+    white-space: nowrap;
+    height: 2.3em;
+    width: 1000px;
+}
+nav.alphabet a.btn_letter {
+    float: left;
+    color: #1B82AC;
+    font-family: Arial;
+    font-size: 1.2em;
+    line-height: 2.3em;
+    padding: 0 4px;
+    border: 1px solid #B6D0EF;
+    width: 80px;    
+    text-align: center;
+    border-radius: 4px;
+    width: 1.5em;
+    margin: 0 2px 20px 2px;
+    /* IE10 Consumer Preview */ 
+    background-image: -ms-linear-gradient(top, #FFFFFF 0%, #B6D0EF 100%);
+    /* Mozilla Firefox */ 
+    background-image: -moz-linear-gradient(top, #FFFFFF 0%, #B6D0EF 100%);
+    /* Opera */ 
+    background-image: -o-linear-gradient(top, #FFFFFF 0%, #B6D0EF 100%);
+    /* Webkit (Safari/Chrome 10) */ 
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, #B6D0EF));
+    /* Webkit (Chrome 11+) */ 
+    background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #B6D0EF 100%);
+    /* W3C Markup, IE10 Release Preview */ 
+    background-image: linear-gradient(to bottom, #FFFFFF 0%, #B6D0EF 100%);
+}
+
+div.form {
+    margin: 30px 0;
+    width: 66%;
+}
+div.form > div {
+    float: left;
+    margin-top: 10px;
+    padding-left: 15px;
+}
+div.form > div a {
+    margin: 5px 0;
+}
+
+div.floatLeft a {
+    padding: 7px;
+}
+div.featured-celebrities {
+    margin-left: -10px;
+    margin-bottom: 15px;
+}
+div.featured {
+    float: left;
+    margin: 15px 15px;
+    border: 1px solid #DDDDDD;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: -3px 10px 27px #062D46;
+    padding: 15px 0 15px 15px;
+    background-color: #EFEFEF;
+    width: 458px;
+    height: 300px;
+}
+div.featured-img {
+    float: left;
+    height: 170px;
+    overflow: hidden;
+}
+div.featured-img img {
+    float: left;
+    display: inline;
+    min-width: 130px;
+    max-width: 140px;
+}
+div.featured-name {
+    float: right;
+    width: 277px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #062D46;
+    padding-bottom: 10px;
+}
+div.featured-about {
+    float: right;
+    width: 277px;
+    max-height: 146px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+div.featured-about li {
+    margin-left: 15px;
+}
+div.featured-about a {
+    color: #0D7AAA;
+}
+
+div.container-slider {
+    margin-top: 4px;
+    width: 453px;
+}
+div.celeb-members {
+    width: 453px;
+    height: 110px;
+    overflow: hidden;
+}
+div.container-slider label {
+    display: block;
+    color: #0D7AAA;
+    font-size: 1.3em;
+    line-height: 1.3em;
+    margin: 0 0 5px 16px;
+}
+div.container-slider label span {
+    font-size: 0.6em;
+}
+div.celeb-members div.member-group {
+    height: 110px;
+    width: 422px;
+}
+div.celeb-members div.member {
+    float: left;
+    width: 70px;
+    height: 115px;
+}
+div.celeb-members div.member > div {
+    text-align: center;
+}
+div.celeb-members img {
+    max-width: 60px;
+    max-height: 60px;
+    margin: 0 auto;
+}
+
+div.celeb-members .small-img {
+    height: 60px;
+    text-align: center;
+}
+div.celeb-members .small-name {
+    height: 14px;
+}
+div.celeb-members .small-name a {
+    font-size: 10px;
+    color: #777;
+    line-height: 14px;
+}
+div.celeb-members .small-nprofit {
+    height: 14px;
+    overflow: hidden;
+}
+div.celeb-members .small-nprofit a {
+    font-size: 10px;
+    color: #0D7AAA;
+    line-height: 14px;
+}
+
+div.celebrity-alpha-group {
+    margin: 10px 0;
+}
+div.celebrity-links {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+div.celebrity-alpha-group > label.initial {
+    display: block;
+    margin: 10px 0;
+    padding-top: 10px;
+    font-size: 3.5em;
+    font-weight: bold;
+    font-style: italic;
+    color: #0D7AAA;
+}
+div.celebrity-alpha-group > div {
+    margin-left: 40px;
+    margin-top: -20px;
+}
+div.celebrity-alpha-group a {
+    color: #0D7AAA;
+}
+
+div#cause-links {
+    margin: 6px 0 14px 15px;
+}
+div#field-links {
+    margin: 6px 0 14px 15px;
+}
+
+#tail {
+    position: absolute;
+    left: -99999px;
+    float: left;
+    z-index: 10;
+    border: 1px solid #DDDDDD;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 1px 4px #CCCCCC;
+    padding: 15px 25px;
+    background-color: #EFEFEF;
+    display: none;
+}
+
+/*div#load_spinner {
+    margin-top: 40px;
+    margin-bottom: 60px;
+}*/
+
+div.head-links {
+    font-size: 1.2em;
+}
+
+.ads-right {
+    margin: 50px 0;
+    height: 880px;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 2em;
+}
+.ads-topbot {
+    height: 115px;
+    line-height: 115px;
+    text-align: center;
+    font-size: 3em;
+}

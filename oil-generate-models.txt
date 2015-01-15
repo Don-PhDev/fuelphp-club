@@ -1,0 +1,124 @@
+/**
+ * First batch of migration
+ */
+php oil g model user username:varchar[50] password:varchar[255] group:int[11] email:varchar[255] last_login:varchar[25] login_hash:varchar[255] profile_fields:TEXT first_name:varchar[25] last_name:varchar[25] alias:varchar[25] birth_date:DATE phone_number:varchar[15] image_filename:varchar[255] gender:enum["M", "F"]
+
+php oil g model member user_id:int[11] customer_referer_id:int[11] status:varchar[32]
+
+php oil g model nonprofit name:varchar[45] info:varchar[255]
+
+php oil g model member_address customer_id:int[11] line_1:varchar[45] line_2:varchar[45] city:varchar[35] state:varchar[35] zip:CHAR[5] --no-timestamp
+
+php oil g model member_referer first_name:varchar[25] last_name:varchar[25] --no-timestamp
+
+php oil g model nonprofit_address nonprofit_id:int[11] city:varchar[35] state:varchar[35] --no-timestamp
+
+php oil g model members_nonprofits customer_id:int[11] nonprofit_id:int[11] --no-timestamp
+
+
+/**
+ * Add country to member_address, nonprofit_address
+ */
+php oil g migration add_country_to_member_addresses country:varchar[35]
+php oil g migration add_country_to_nonprofit_addresses country:varchar[35]
+
+
+/**
+ * Points log tables
+ */
+php oil g model member_points member_id:int[11] points:int source:varchar[20]
+php oil g model nonprofit_points nonprofit_id:int[11] points:int source:varchar[20]
+
+/**
+ * Add running_points to member, nonprofit
+ */
+php oil g migration add_running_points_to_members running_points:int[11]
+php oil g migration add_running_points_to_nonprofits running_points:int[11]
+
+/**
+ * Add topics
+ */
+php oil g model topics name:varchar[35]
+php oil g model comments topic_id:int[11] title:varchar[100] message:text
+
+/**
+ * Add messages
+ */
+
+php oil g model messages name:varchar[45] message:text email:varchar[100] phone_number:varchar[12]
+
+/**
+ * Add cause
+ */
+php oil g model causes cause:varchar[35] --no-timestamp
+
+/**
+ * Add celebrities
+ */
+php oil g model celebrities first_name:varchar[35] last_name:varchar[35] image_filename:varchar[100] --no-timestamp
+
+/**
+ * Add benefactors
+ */
+php oil g model benefactors name:varchar[45] image_filename:varchar[100] organization_name:varchar[45] organization_logo:varchar[100] organization_text:text
+
+/**
+ * Add infoemails
+ */
+php oil g model infoemails email_type:varchar[30] email_subject:varchar[100] email_text:text delivery_schedule:varchar[7] is_active:tinyint[1]
+
+php oil g model infoemails_members member_id:int[11] infoemail_id:int[11] --no-timestamp
+php oil g model infoemails_members_log member_id:int[11] infoemail_id:int[11] --created-at=send_at
+
+/**
+ * Add donors
+ */
+php oil g model donors name:varchar[45] image_filename:varchar[100] organization_name:varchar[45] organization_logo:varchar[100] organization_text:text
+php oil g model donors_nonprofits donor_id:int[11] nonprofit_id:int[11] --no-timestamp
+php oil g model donors_nonprofits_donations donor_id:int[11] nonprofit_id:int[11] amount:decimal[10,2]
+
+/**
+ * Add reasons_for_choosing
+ */
+php oil g model reasons_for_choosing member_id:int nonprofit_id:int reason:text
+
+/**
+ * Member invites
+ */
+php oil g model member_invites member_id:int email:varchar[100] 
+
+/**
+ * Add member_comments
+ */
+php oil g model member_comments member_id:int commenting_member_id:int comment:text
+
+/**
+ * Add column mm/dd for user's birth date
+ */
+php oil g migration add_birth_mm_dd_to_users mm_dd:char[5]
+
+/**
+ * Add column website_url to nonprofits
+ */
+php oil g migration add_website_url_to_nonprofits website_url:varchar[50]
+
+/**
+ * Add column website_url to nonprofits
+ */
+php oil g migration add_is_selected_to_nonprofits is_contacted:tinyint[1]
+
+/**
+ * Rename table: reasons_for_choosing to member_nonprofit_selections
+ */
+php oil g migration rename_table_reasons_for_choosing_to_member_nonprofit_selections
+
+/**
+ * Migration to add Profession
+ */
+php oil g model profession field:varchar[35] --no-timestamp
+php oil g model celebrities_professions celebrity_id:int[11] profession_id:int[11] --no-timestamp
+php oil g migration push_celebrities_professions_rels
+
+/**
+ * Add Celebrities: short_bio, birth_info
+php oil g migration add_short_bio_birth_info_to_celebrities short_bio:varchar[500] birth_info:varchar[200]

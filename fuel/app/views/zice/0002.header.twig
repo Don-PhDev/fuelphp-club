@@ -1,0 +1,16 @@
+        <!-- Header -->
+        <div id="header">
+            <div id="account_info"> 
+                <img src="http://www.gravatar.com/avatar/{{ md5(current_user.email) }}?d=wavatar&s=32" alt="Online" class="avatar"/>
+                <div class="setting"><b>Welcome,</b> <b class="red">{{ current_user.first_name }} {{ current_user.last_name }}</b><img src="/assets/vendor/zice/images/gear.png" class="gear"  alt="Profile Setting" >
+                    <ul class="subnav ">
+                        <li><a href="">Dashboard</a></li>
+                        <li><a href="">Profile</a></li>
+                        <li><a href="">Setting</a></li>
+                        <li><a href="">Reset password</a></li>
+                        <br class="clear"/>
+                    </ul>
+              </div>
+                <div class="logout" title="Disconnect"><b >Logout</b> <img src="/assets/vendor/zice/images/connect.png" name="connect" class="disconnect" alt="disconnect" ></div> 
+            </div>
+        </div><!-- End Header -->

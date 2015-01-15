@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+        <meta name="description" content=""/>
+        <meta name="keywords" content=""/>
+        
+        <title>ziceinclude&trade; admin version 1.5 online</title>
+
+        <!-- Link shortcut icon-->
+        <link rel="shortcut icon" type="image/ico" href="/assets/vendor/zice/images/favicon2.ico"/> 
+
+        <!-- Link css-->
+        <link rel="stylesheet" type="text/css" href="/assets/vendor/zice/css/zice.style.css"/>
+		
+        <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="/assets/vendor/zice/components/flot/excanvas.min.js"></script><![endif]-->  
+		
+        <script type="text/javascript" src="/assets/vendor/zice/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/ui/jquery.ui.min.js"></script> 
+        <script type="text/javascript" src="/assets/vendor/zice/components/ui/jquery.autotab.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/ui/timepicker.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/colorpicker//assets/vendor/zice/js/colorpicker.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/checkboxes/iphone.check.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/elfinder//assets/vendor/zice/js/elfinder.full.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/datatables/dataTables.min.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/datatables/ColVis.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/scrolltop/scrolltopcontrol.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/fancybox/jquery.fancybox.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/jscrollpane/mousewheel.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/jscrollpane/mwheelIntent.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/jscrollpane/jscrollpane.min.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/spinner/ui.spinner.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/tipsy/jquery.tipsy.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/editor/jquery.cleditor.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/chosen/chosen.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/confirm/jquery.confirm.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/validationEngine/jquery.validationEngine.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/validationEngine/jquery.validationEngine-en.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/vticker/jquery.vticker-min.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/sourcerer/sourcerer.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/fullcalendar/fullcalendar.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/flot/flot.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/flot/flot.pie.min.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/flot/flot.resize.min.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/flot/graphtable.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/uploadify/swfobject.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/uploadify/uploadify.js"></script>        
+        <script type="text/javascript" src="/assets/vendor/zice/components/checkboxes/customInput.jquery.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/effect/jquery-jrumble.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/filestyle/jquery.filestyle.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/placeholder/jquery.placeholder.js"></script>
+		<script type="text/javascript" src="/assets/vendor/zice/components/Jcrop/jquery.Jcrop.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/imgTransform/jquery.transform.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/webcam/webcam.js"></script>
+		<script type="text/javascript" src="/assets/vendor/zice/components/rating_star/rating_star.js"></script>
+		<script type="text/javascript" src="/assets/vendor/zice/components/dualListBox/dualListBox.js"></script>
+		<script type="text/javascript" src="/assets/vendor/zice/components/smartWizard/jquery.smartWizard.min.js"></script>
+		<script type="text/javascript" src="/assets/vendor/zice/components/maskedinput/jquery.maskedinput.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/components/highlightText/highlightText.js"></script>
+		<script type="text/javascript" src="/assets/vendor/zice/components/elastic/jquery.elastic.source.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/js/jquery.cookie.js"></script>
+        <script type="text/javascript" src="/assets/vendor/zice/js/zice.custom.js"></script>
+		<script type="text/javascript">
+	 $(document).ready(function(){	
+		   loading('Loading',0);
+		   $(".reloaddata").load('ajax/lastReload.php',function(){ unloading(); }).fadeIn('400');
+		   $("#tab1 .load_page").load('ajax/tableReload.php',function(){ unloading(); }).fadeIn('400');
+		   $(".reloaddata2").load('ajax/pages1.html');
+		   $(".reloaddata3").load('ajax/pages2.html');
+		   
+			var prefix = "selectBox_";
+		   $('#demosubmit').validationEngine({
+					prettySelect : true,
+					usePrefix: prefix,
+					ajaxFormValidation: true,
+					onBeforeAjaxFormValidation: Add_database
+			});		
+				$("select").selectBox();
+				$('select').each(function(){ 
+					$(this).next('a.selectBox')
+					.attr("id", prefix + this.id )
+					.removeClass("validate[required]");		
+			  })
+			$('.sendform').click(function(){
+						var form_id=$(this).parents('form').attr('id');
+						$("#"+form_id).submit();
+			})		 
+	  }); 
+	 
+	function Add_database(form, options){
+		 loading('Loading',1);
+		 var data=form.serialize();		
+		$.ajax({
+			url: "ajax/adddatabase.php",
+			data: data,
+			success: function(data){	
+				  if(data.check==0){   // uncomplete return 0
+					  $('#preloader').fadeOut(400,function(){ $(this).remove(); });		
+					  showError('Error : Sorry you can submit agian');
+					   return false;
+				  }
+				  if(data.check==1){ // complete return 1
+				  	 $("#tab1 .load_page").fadeOut(400).load('ajax/tableReload.php').fadeIn(400);
+					 $(".reloaddata").fadeOut(400).load('ajax/lastReload.php',function(){
+						ResetForm();
+						setTimeout('unloading()',500); 
+					  }).fadeIn(400);	
+				  }
+			},
+			cache: false,type: "POST",dataType: 'json'
+		});				
+	} 
+	
+	function reload2(){
+		 loading('Loading',1);
+		 $(".reloaddata2").load('ajax/pages1.html',function(){ unloading(); }).fadeIn('400');		
+	}
+	function reload3(){
+		 loading('Loading',1);
+		 $(".reloaddata2").load('ajax/pages2.html',function(){ unloading(); }).fadeIn('400');		
+	}
+	function reload4(){
+		 loading('Loading',1);
+		 $(".reloaddata3").load('ajax/pages1.html',function(){ unloading(); }).fadeIn('400');		
+	}
+	function reload5(){
+		 loading('Loading',1);
+		 $(".reloaddata3").load('ajax/pages2.html',function(){ unloading(); }).fadeIn('400');		
+	}
+          </script>
+		</head>        
+        <body class="dashborad">        
+        <div id="alertMessage" class="error"></div>
+		<!-- Header -->
+        <div id="header">
+                <div id="account_info"> 
+                    <img src="/assets/vendor/zice/images/avatar.png" alt="Online" class="avatar"/>
+					<div class="setting"><b>Welcome,</b> <b class="red">John Doe</b><img src="/assets/vendor/zice/images/gear.png" class="gear"  alt="Profile Setting" >
+                        <ul class="subnav ">
+                            <li><a href="#">Dashboard</a></li>
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Setting</a></li>
+                            <li><a href="#">Reset password</a></li>
+							<br class="clear"/>
+                        </ul>
+                  </div>
+					<div class="logout" title="Disconnect"><b >Logout</b> <img src="/assets/vendor/zice/images/connect.png" name="connect" class="disconnect" alt="disconnect" ></div> 
+                </div>
+            </div><!-- End Header -->
+			<div id="shadowhead"></div>
+
+              <div id="left_menu">
+                    <ul id="main_menu" class="main_menu">
+                      <li class="limenu" ><a href="dashboard.html"><span class="ico gray shadow home" ></span><b>Dashboard</b></a></li>
+                      <li class="limenu" ><a href="#" ><span class="ico gray shadow window"></span><b>Form elements</b></a>
+                        <ul>
+                          <li ><a href="form.html"> basic form </a></li>
+                          <li ><a href="vform.html"> validation </a></li>
+                          <li ><a href="wizard.html"> wizard </a></li>
+                        </ul>
+                      </li>
+                      <li class="limenu" ><a href="#"><span class="ico gray  dimensions" ></span><b>Sample pages</b></a>
+                        <ul>
+                          <li ><a href="profile.html"> Profile setting </a></li>
+                          <li ><a href="conversation.html"> conversation</a></li>
+                          <li ><a href="imagesEditor.html"> Images Editor </a></li>
+                          <li ><a href="barcode.html"> barcode </a></li>
+                          <li ><a href="messages.html"> messages </a></li>
+                          <li ><a href="grid.html"> Grid System </a></li>
+                        </ul>
+                      </li>
+					  <li class="limenu select" ><a href="ajax.html"><span class="ico gray shadow   encrypt"></span><b>Sample ajax</b> </a></li>
+                      <li class="limenu" ><a href="table.html"><span class="ico gray shadow  spreadsheet"></span><b>Tables</b> </a></li>
+                      <li class="limenu" ><a href="gallery.html"><span class="ico gray shadow pictures_folder"></span><b>Gallery </b></a></li>
+                      <li class="limenu" ><a href="#"><span class="ico gray shadow stats_lines"></span><b>Graph and Charts</b> </a>
+                        <ul>
+                          <li><a href="modalchartLive.html" class="pop_box">live chart </a></li>
+                          <li><a href="chart.html">all chart</a></li>
+                        </ul>
+                      </li>
+                      <li class="limenu" ><a href="filemanager.html"><span class="ico gray shadow  file"></span><b>File manager </b></a></li>
+                      <li class="limenu" ><a href="calendar.html"><span class="ico gray shadow calendar"></span><b>Calendar </b></a></li>
+                      <li class="limenu" ><a href="typography.html"><span class="ico gray  shadow paragraph_align_left"></span><b>Typography</b></a></li>
+                      <li class="limenu" ><a href="inelement.html"><span class="ico gray shadow abacus"></span><b>Interface elements </b></a></li>
+                      <li class="limenu" ><a href="map.html"><span class="ico gray shadow  location"></span><b>Map location </b></a></li>
+                      <li class="limenu" ><a href="icon.html"><span class="ico gray  shadow satellite"></span><b>Icon and Button </b></a></li>
+					  <li class="limenu" ><a href="404.html"><span class="ico gray  shadow firewall"></span><b>Error Pages</b></a></li>
+                    </ul>
+              </div>
+
+            
+            <div id="content">
+                <div class="inner">
+					<div class="topcolumn">
+						<div class="logo"></div>
+                            <ul  id="shortcut">
+                                <li> <a href="#" title="Back To home"> <img src="/assets/vendor/zice/images/icon/shortcut/home.png" alt="home"/><strong>Home</strong> </a> </li>
+                                <li> <a href="#" title="Website Graph"> <img src="/assets/vendor/zice/images/icon/shortcut/graph.png" alt="graph"/><strong>Graph</strong> </a> </li>
+                                <li> <a href="#" title="Setting" > <img src="/assets/vendor/zice/images/icon/shortcut/setting.png" alt="setting" /><strong>Setting</strong></a> </li> 
+                                <li> <a href="#" title="Messages"> <img src="/assets/vendor/zice/images/icon/shortcut/mail.png" alt="messages" /><strong>Message</strong></a><div class="notification" >10</div></li>
+                            </ul>
+					</div>
+                    <div class="clear"></div>               
+    
+					<!-- full width -->
+                    <div class="widget">
+                        <div class="header"><span><span class="ico gray encrypt"></span>Sample Ajax Form</span>
+                            <div class="searchBox">
+                            <div class="searchAutocomplete"></div>
+                            <div class="searchText">
+                                <form action="http://www.google.com" method="GET">
+                                    <input  type="text"  nane="s" id="sAtcom"placeholder="Live Search..."/>
+                                </form>
+                            </div>
+                            </div>
+
+                        </div><!-- End header -->	
+                        <div class="content" >
+						
+							<!-- Half width column-->
+							<div class="widgets">
+								<div class="oneTwo">
+								<h3 >submit form </h3>
+										<form name="demosubmit" id="demosubmit">
+											  <div class="section" >
+												  <label> title name <small>Text custom</small></label>   
+												  <div>
+											  <select name="titlename" id="titlename" class="validate[required] small" >
+													 <option value="">Choose Me.</option>
+													 <option value="Mrs.">Mrs.</option>
+													 <option value="Miss">Miss</option>
+													 <option value="Ms.">Ms.</option>
+													 <option value="Mr.">Mr.</option>
+													 <option value="Master">Master</option>
+												</select> 
+												  </div>
+											 </div>
+											  <div class="section">
+												  <label> Name <small>Text custom</small></label>   
+												  <div> <input type="text" name="name" id="name" class="validate[required,minSize[3],maxSize[20] ] medium" /><span class="f_help">Name</span></div>
+												  <div> <input type="text" name="lastname" id="lastname" class="validate[required,minSize[3],maxSize[40] ] medium"  /><span class="f_help">Last name</span></div>
+											 </div>
+											  <div class="section">
+												  <label> email <small>Text custom</small></label>   
+												  <div> <input type="text" name="email" id="email" class="validate[required,custom[email]] large" /><span class="f_help">Text custom help</span></div>
+											 </div>
+											  <div class="section">
+												  <label> Gender <small>Text custom</small></label>   
+												  <div>
+													  <div class="radiorounded">
+													  <input type="radio"  id="radioround" name="gender"  checked="checked"  value="1"/><label for="radioround" title="male"></label>
+													  </div>
+													  <div class="radiorounded">
+													  <input type="radio"  id="radioround2" name="gender"  value="2"/><label for="radioround2" title="female"></label>
+													  </div>
+												  </div>
+											 </div>
+											  <div class="section last">
+												  <div><a class="uibutton sendform" >submit</a> <a class="uibutton special" onClick="ResetForm()"  >clear form</a></div>
+											 </div>
+										</form>
+							  </div>
+							  
+								<div class="oneTwo">
+								<h3 >Reload Data </h3>
+									<div class="reloaddata"></div>
+								</div>
+							</div><!-- End Half width column -->
+							
+							<div class="clear"></div>
+                        </div><!-- End content -->
+                    </div><!-- End full width -->
+					
+					<!-- full width -->
+                    <div class="widget">
+                        <div class="header"><span><span class="ico gray encrypt"></span> Ajax load Pages</span></div><!-- End header -->	
+                        <div class="content" >
+						
+							  <div id="UITab">
+							  <ul class="tabs" >
+								  <li ><a href="#tab1" >   with toolbar <img src="/assets/vendor/zice/images/icon/new.gif" width="20" height="9" /></a></li>            
+							  </ul>
+							  <div class="tab_container" >
+		
+								  <div id="tab1" class="tab_content"> 
+								  	<!-- Tablereload -->
+									<div class="load_page"></div>
+								 </div>
+								 
+							</div><!-- End tab_container -->
+							</div><!-- End UITab -->
+							<div class="clear"></div>
+                        </div><!-- End content -->
+                    </div><!-- End full width -->
+
+
+					<!-- full width -->
+                    <div class="widget">
+                        <div class="header"><span><span class="ico gray encrypt"></span>Sample Ajax load Pages</span></div><!-- End header -->	
+                        <div class="content" >
+
+							<!-- Half width column-->
+							<div class="widgets">
+							
+								<div class="oneTwo">
+								<h3 >Pages 1</h3>
+										<ul class="uibutton-group">
+											  <li><a class="uibutton normal" onclick="reload2();" >Reload Pages 1 </a></li>
+											  <li><a class="uibutton normal" onclick="reload3();" >Reload Pages 2</a></li>      
+										</ul>
+										<!-- clear fix -->
+										<div class="clear"></div>
+									<div class="reloaddata2"></div>
+								</div>
+							  
+								<div class="oneTwo">
+								<h3 >Pages 2 </h3>
+										<ul class="uibutton-group">
+											  <li><a class="uibutton normal" onclick="reload4();" >Reload Pages 1 </a></li>
+											  <li><a class="uibutton normal" onclick="reload5();" >Reload Pages 2</a></li>      
+										</ul>
+										<!-- clear fix -->
+										<div class="clear"></div>
+									<div class="reloaddata3"></div>
+								</div>
+								
+							</div><!-- End Half width column -->
+							<div class="clear"></div>
+
+                        </div><!-- End content -->
+                    </div><!-- End full width -->
+
+					<div class="clear"></div>
+                    <div id="footer"> &copy; Copyright 2012 <span class="tip"><a  href="#" title="Zice Admin" >Your Company Name</a> </span> </div>
+
+                </div> <!--// End inner -->
+              </div> <!--// End content --> 
+</body>
+</html>

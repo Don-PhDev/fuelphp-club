@@ -1,0 +1,158 @@
+            <div class="home_scoreboards">
+                <h2 class="cs_title">Current Scoreboards</h2>
+                <div class="cs_content" id="cs_content">
+                    <ul id="cs_tabs" class="tabs">
+                        <li><a href="#sec_member">Member</a></li>
+                        <li><a href="#sec_charity">Non Profit</a></li>
+                    </ul>
+                    <div class="cs_tabs_content">
+                    
+                        <section id="sec_member">
+                            <nav>
+                                <ul>
+                                    <li><a href="/ajax/member_starts/a">A</a></li>
+                                    <li><a href="/ajax/member_starts/b">B</a></li>
+                                    <li><a href="/ajax/member_starts/c">C</a></li>
+                                    <li><a href="/ajax/member_starts/d">D</a></li>
+                                    <li><a href="/ajax/member_starts/e">E</a></li>
+                                    <li><a href="/ajax/member_starts/f">F</a></li>
+                                    <li><a href="/ajax/member_starts/g">G</a></li>
+                                    <li><a href="/ajax/member_starts/h">H</a></li>
+                                    <li><a href="/ajax/member_starts/i">I</a></li>
+                                    <li><a href="/ajax/member_starts/j">J</a></li>
+                                    <li><a href="/ajax/member_starts/k">K</a></li>
+                                    <li><a href="/ajax/member_starts/l">L</a></li>
+                                    <li><a href="/ajax/member_starts/m">M</a></li>
+                                    <li><a href="/ajax/member_starts/n">N</a></li>
+                                    <li><a href="/ajax/member_starts/o">O</a></li>
+                                    <li><a href="/ajax/member_starts/p">P</a></li>
+                                    <li><a href="/ajax/member_starts/q">Q</a></li>
+                                    <li><a href="/ajax/member_starts/r">R</a></li>
+                                    <li><a href="/ajax/member_starts/s">S</a></li>
+                                    <li><a href="/ajax/member_starts/t">T</a></li>
+                                    <li><a href="/ajax/member_starts/u">U</a></li>
+                                    <li><a href="/ajax/member_starts/v">V</a></li>
+                                    <li><a href="/ajax/member_starts/w">W</a></li>
+                                    <li><a href="/ajax/member_starts/x">X</a></li>
+                                    <li><a href="/ajax/member_starts/y">Y</a></li>
+                                    <li><a href="/ajax/member_starts/z">Z</a></li>
+                                </ul>
+                            </nav>
+                            <div style="clear:both;"></div>
+                            <details></details>
+                        </section>
+
+                        <section id="sec_charity">
+                            <nav>
+                                <ul>
+                                    <li><a href="/ajax/nonprofit_starts/a">A</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/b">B</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/c">C</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/d">D</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/e">E</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/f">F</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/g">G</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/h">H</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/i">I</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/j">J</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/k">K</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/l">L</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/m">M</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/n">N</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/o">O</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/p">P</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/q">Q</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/r">R</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/s">S</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/t">T</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/u">U</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/v">V</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/w">W</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/x">X</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/y">Y</a></li>
+                                    <li><a href="/ajax/nonprofit_starts/z">Z</a></li>
+                                </ul>
+                            </nav>
+                            <div style="clear:both;"></div> 
+                            <details></details>
+                        </section>
+                    </div>
+                </div>
+            </div>
+<script type="text/javascript">
+$(function(){
+    $('div.home_scoreboards nav a').click(function(e){
+        e.preventDefault();
+        call_ajax($(this).attr('href'));
+    });
+
+    $('div.home_scoreboards details').hide();
+});
+
+function call_ajax(ajaxres)
+{
+    $.getJSON(ajaxres, function(data){
+        if (data)
+        {
+            if (ajaxres.indexOf("nonprofit") >= 0) 
+            {
+                set_nonprofit_details($('section#sec_charity details'), data);
+                $('section#sec_charity details').show();
+            }
+            else
+            {
+                set_member_details($('section#sec_member details'), data);
+                $('section#sec_member details').show();
+            }
+        }
+    });
+}
+
+function set_member_details(obj, data)
+{
+    if (data.length == 0)
+    {
+        obj.html("No member matched.");
+        return;
+    }
+    
+    obj.html("");
+
+    $.each(data, function(nil, row){
+        np1 = '';
+        if (1 == row.nonprofits.length)
+            np1 = '<div class="charity"><a title="' + row.nonprofits[0].name + '" href="/nonprofit/index/' + row.nonprofits[0].id + '">' + row.nonprofits[0].name + '</a></div>';
+        np2 = '';
+        if (2 == row.nonprofits.length)
+            np2 = '<div class="charity"><a title="' + row.nonprofits[1].name + '" href="/nonprofit/index/' + row.nonprofits[1].id + '">' + row.nonprofits[1].name + '</a></div>';
+
+        obj.append('<div class="leader_box">'
+            +'<div class="points">' + row.running_points + row.flag + '</div>'
+            +'<div><a class="nostyle" href="/member/index/' + row.id + '"><img class="user_image" src="' + row.avatar + '"></div>'
+            +'<span class="name">' + row.name + '</span>' + np1 + np2
+        +'</div>');
+    });
+
+    obj.append('<div class="clearBoth"></div>');
+}
+
+function set_nonprofit_details(obj, data)
+{
+    if (data.length == 0)
+    {
+        obj.html("No non-profit matched.");
+        return;
+    }
+
+    obj.html("");
+
+    $.each(data, function(nil, row){
+        obj.append('<div class="white-box">'
+            +'<div class="floatLeft one-half"><strong><a href="/nonprofit/index/' + row.id + '">' + row.name + '</a></strong></div>'
+            +'<div class="floatLeft one-fourth">' + row.running_points + '</div>'
+            +'<div class="floatLeft one-fourth"><div style="margin-top:13px">' + row.flag + '</div></div>'
+            +'<div class="clearBoth"></div>'
+        +'</div>');
+    });
+}
+</script>

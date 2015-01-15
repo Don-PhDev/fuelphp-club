@@ -1,0 +1,210 @@
+{% import 'macro/form.twig' as mac %}
+{% import 'macro/helper.twig' as mach %}
+
+        <div id="cp_left">
+        
+        	<div class="whats_new_pan">
+            	<h1 class="wnp_title">What's New</h1>
+            	<div class="wnp_content_box">
+                	<div class="wnp_content">
+                    
+    {% for comment in comments %}
+
+                    <div class="wnp_content_div1">
+                      <div class="wnp_content_title ">{{ comment.topic.name }}</div>
+                      <!-- <div><img src="/assets/img/video_image.gif" /></div> -->
+                      <div>
+                        <span class="wp_content_div1_heaidng1">{{ comment.title }}</span><br />
+                        <span class="wp_content_div1_heaidng2">{{ date('M d, Y', comment.created_at) }}</span>
+                        <p>{{ comment.message }}<br><br></p>
+                        <div align="right"><span><img src="/assets/img/slidr_bg.gif" /></span> </div>
+                      </div>                    
+                    </div>
+
+    {% endfor %}
+
+                    <div style="clear:both;"></div>
+                    </div>
+              </div>
+            </div>
+            
+{% include "middle-member-newest.twig" %}
+{% include "middle-member-leaders.twig" %}
+{% include "middle-alpha-scoreboard.twig" %}
+            
+            <div class="point_allocations">
+            	<h2 class="pa_title">Point Allocations</h2>
+            	<div class="pa_content">
+                
+                	<div class="pac_box pac_box_left">
+                    <a href="#" class="info_icon"></a>
+                    	<h3>Easy Points</h3>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <tr class="alt_row">
+                            <td>Referring  a  new member</td>
+                            <td>500 each.</td>
+                          </tr>
+                          <tr>
+                            <td>Each login</td>
+                            <td>200<small>(200 per day maximum)</small></td>
+                          </tr>
+                          <tr class="alt_row">
+                            <td>Participating in a chat room</td>
+                            <td>200<small>(200 per day maximum)</small></td>
+                          </tr>
+                          <tr>
+                            <td>Each shopping purchase</td>
+                            <td>2000<small>(each check out)</small></td>
+                          </tr>
+                        </table>
+                    </div>
+                
+                	<div class="pac_box pac_box_right">
+                    <a href="#" class="info_icon"></a>
+                    	<h3>Sponsership</h3>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <tr class="alt_row">
+                            <td>Member's page</td>
+                            <td>5,000 points</td>
+                          </tr>
+                          <tr>
+                            <td>Non Profit's page</td>
+                            <td>10,000 points</td>
+                          </tr>
+                          <tr class="alt_row">
+                            <td>Others</td>
+                            <td>10,000 points</td>
+                          </tr>
+                        </table>
+                  </div>
+                
+                <div class="clear"></div>
+                <br />
+
+                	<div class="pac_box">
+                    <a href="#" class="info_icon"></a>
+                    	<h3>Challenges</h3>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <thead>
+                              <tr>
+                                <th>Challenges</th>
+                                <th>Participate</th>
+                                <th>Win</th>
+                                <th>Second</th>
+                                <th>Third</th>
+                              </tr>
+                          </thead>
+                          <tr>
+                            <td>Contests</td>
+                            <td>500</td>
+                            <td>3000</td>
+                            <td>2000</td>
+                            <td>1000</td>
+                          </tr>
+                          <tr class="alt_row">
+                            <td>Games</td>
+                            <td>500</td>
+                            <td>3000</td>
+                            <td>2000</td>
+                            <td>1000</td>
+                          </tr>
+                          <tr>
+                            <td>Quizzes</td>
+                            <td>500</td>
+                            <td>3000</td>
+                            <td>- - -</td>
+                            <td>- - -</td>
+                          </tr>
+                          <tr class="alt_row">
+                            <td>Survey and Polls</td>
+                            <td>500</td>
+                            <td>- - -</td>
+                            <td>- - -</td>
+                            <td>- - -</td>
+                          </tr>
+                          <tr>
+                            <td>Fantasy Games</td>
+                            <td>1000</td>
+                            <td>5000</td>
+                            <td>3000</td>
+                            <td>2000</td>
+                          </tr>
+                          <tr class="alt_row">
+                            <td>Slot Games</td>
+                            <td>TBD</td>
+                            <td>TBD</td>
+                            <td>TBD</td>
+                            <td>TBD</td>
+                          </tr>
+                          <tr>
+                            <td>Puzzles</td>
+                            <td>500</td>
+                            <td>1000</td>
+                            <td>- - - </td>
+                            <td>- - -</td>
+                          </tr>
+                          
+                        </table>
+                    </div>
+                
+                
+                </div>
+            </div>
+        
+        </div>
+        
+        
+        
+        <div id="cp_right">
+        	<div class="banner_box">
+            <div class="video_bg">Comment with<br />
+              Members, Non Profits, <br />
+              Challenges Participants</div>
+           	  <a href=""></a>
+            </div>
+        	<div class="banner_box">
+            	<div class="cat_bg">
+                
+              <div class="cat_bg_div1">adoptable pets from 13,754<br />
+           	    adoption groups</div>  
+                
+                <div class="cat_bg_div2"><img src="/assets/img/cat_image.gif" />Kitti<a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image65','','/assets/img/click_here_btn_hover.gif',1)"><br /><br />
+
+<a href="#"><input type="submit" name="" value="" class="clickhere_btn" /></a></div>
+                
+                
+                
+                </div>
+                
+   <div class="individual_bg"><p>WE SALUTE THESE "INDIVIDUALS WHO GIVE BACK ON THEIR OWN"<br /></p>
+       <select>
+  <option selected="selected">Individuals</option>
+  <option>Individuals</option>
+  <option>Individuals</option>
+  <option>Individuals</option>
+  <option>Individuals</option>
+  <option>Individuals</option>
+              </select></div>
+
+<div class="individual_bg"><p>WE SALUTE THESE "INDIVIDUALS WHO GIVE BACK ON THEIR OWN"<br /></p>
+       <select name="">
+  <option selected="selected">Celebrities</option>
+  <option>Celebrities</option>
+  <option>Celebrities</option>
+  <option>Celebrities</option>
+  <option>Celebrities</option>
+                     </select></div>
+
+
+
+       	  </div>
+            
+{% include "right-nprofit-top-leaders.twig" %}
+
+{% if birthday_users %}
+  {% include "right-happy-birthday.twig" %}
+{% endif %}
+
+{# include "right-new-members-rectangle.twig" #}
+            
+        </div>

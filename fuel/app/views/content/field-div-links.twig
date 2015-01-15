@@ -1,0 +1,14 @@
+    <div class="fields-group">
+        
+{% if fields %}
+    {% for field in fields %}
+
+        <div class="field">
+            <a href="/celebrities/field/{{ field.id }}">{{ field.field }}</a> 
+            <span data-field-id="{{ field.id }}">{# count(field.celebrities) #} celebrities</span>
+        </div>
+
+    {% endfor %}
+{% endif %}
+
+    </div>

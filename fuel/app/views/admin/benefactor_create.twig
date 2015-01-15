@@ -1,0 +1,98 @@
+<!-- full width -->
+<div class="widget">
+    <div class="header"><span><span class="ico gray administrator"></span>Benefactor</span></div><!-- End header -->
+    <div class="content" >
+
+        <!--<form id="validation_demo" action="">-->
+        {{ form_open({"enctype": "multipart/form-data", "id": "validation_demo"}) }}
+
+        <!-- Third / Half column-->
+        <div class="widgets">
+            <div class="oneThree">
+                <div class="profileSetting twoImageInput" >
+                    <div class="avartar"><img data-upload="image_filename" src="/assets/img/no_image_2.jpg" width="180" height="180" alt="Benefactor" title="Benefactor" /></div>
+                    <div class="avartar">
+                        <input type="file" class="fileupload" name="image_filename" id="form_image_filename">
+                        <p align="center"><span>BENEFACTOR'S PICTURE</span></p>
+                    </div>
+                </div>
+                <div class="profileSetting twoImageInput" >
+                    <div class="avartar"><img data-upload="organization_logo" src="/assets/img/no_image_2.jpg" width="180" height="180" alt="Organization logo" title="Organization logo" /></div>
+                    <div class="avartar">
+                        <input type="file" class="fileupload" name="organization_logo" id="form_organization_logo">
+                        <p align="center"><span>ORGANIZATION LOGO</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="twoOne">
+                <div class="section webcam">
+                    <label> Take a picture<small>With  webcam</small></label>   
+                    <div> 
+                        <div id="screen"></div>
+                        <div class="buttonPane">
+                            <a id="takeButton" class="uibutton">Take Me</a> <a id="closeButton" class="uibutton special">Close</a>
+                        </div>
+                        <div class="buttonPane hideme">
+                            <a id="uploadAvatar" class="uibutton confirm">Upload Avartar</a> <a id="retakeButton" class="uibutton special">Retake</a> 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section ">
+                    <label> Full name<small>Enter name of benefactor</small></label>   
+                    <div> 
+                        <input type="text" class="validate[required] large" name="name" value="{{ value.name }}">
+                        {{ errmsg.name ? "<div class='flderrmsg'>#{ errmsg.name }</div>" : '' }}
+                    </div>
+                </div>
+
+                <div class="section">
+                    <label> Organization <small>Enter name of organization</small></label>
+                    <div>
+                        <input type="text" name="organization_name" class="validate[required]] large" value="{{ value.organization_name }}">
+                        {{ errmsg.organization_name ? "<div class='flderrmsg'>#{ errmsg.organization_name }</div>" : '' }}
+                    </div>
+                </div>
+
+                <div class="section ">
+                    <label> About <small>Something about the benefactor or his or her organization</small></label>   
+                    <div> 
+                        <textarea type="text" name="about" class="validate[required]  large" aria-required="true" required>{{ value.about }}</textarea>
+                        {{ errmsg.about ? "<div class='flderrmsg'>#{ errmsg.about }</div>" : '' }}
+                    </div>
+                </div>
+               
+                <div class="section last">
+                    <div>
+                      <a class="uibutton submit_form" >Submit</a>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- End Third / Half column-->
+        <button class="hidden_submit"></button>
+        {{ form_close() }}
+
+        <!-- clear fix -->
+        <div class="clear"></div>
+
+    </div><!-- End content -->
+</div><!-- End full width -->
+
+<script type="text/javascript">
+$(function()
+{
+    $('img[data-upload]').click(function(){
+        $('input[name='+$(this).data('upload')+']').click();
+    });
+
+    $('#form_image_filename').change(function(){
+        read_url(this, $(this).parents('.profileSetting').find('img'));
+    });
+
+    $('#form_organization_logo').change(function(){
+        read_url(this, $(this).parents('.profileSetting').find('img'));
+    });
+});
+</script>

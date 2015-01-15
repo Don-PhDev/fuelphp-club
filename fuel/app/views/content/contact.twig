@@ -1,0 +1,63 @@
+{% import 'macro/form.twig' as mac %}
+
+<div id="cp_left">
+  <div class="contact">
+        <h1>Contact Us</h1>
+        <p>We look forward to hearing from you. Before contacting us, however, please take a look at our About Us/FAQ pages. Here you'll find answers to many of the frequently asked and troubleshooting questions.<br /><br /> </p>
+        
+        <div class="registration_form">
+
+  {{ form_open() }}
+
+            <div class="rf_row_contact">
+                <span class="rf_label">
+                <label for="">Regarding: </label>
+                </span>
+                <br />
+                {{ mac.select("regarding", regarding, value.regarding, "subject", true) }}
+            </div>
+
+            <div class="rf_row_contact">
+              <span class="rf_label"><label for="">Message<span class="mandatory"> * </span> :</label></span>
+              <br />
+              <textarea name="message" class="input_text2" data-focus="1" aria-required="true" required>{{ value.message }}</textarea>
+              {{ errmsg.message ? "<div class='flderrmsg'>#{ errmsg.message }</div>" : '' }}
+            </div>
+
+            <div class="rf_row_contact">
+              <span class="rf_label"><label for="">First Name<span class="mandatory"> * </span> :</label></span><br />
+              <input type="text" name="first_name" class="input_text" value="{{ value.first_name }}" aria-required="true" required>
+              {{ errmsg.first_name ? "<div class='flderrmsg'>#{ errmsg.first_name }</div>" : '' }}
+            </div>
+
+            <div class="rf_row_contact">
+              <span class="rf_label"><label for="">E-mail<span class="mandatory"> * </span> :</label></span><br />
+              <input type="text" name="email" class="input_text" value="{{ value.email }}" aria-required="true" required>
+              {{ errmsg.email ? "<div class='flderrmsg'>#{ errmsg.email }</div>" : '' }}
+            </div>
+            
+            <div class="rf_row_contact">
+              <span class="rf_label"><label for="">Phone :</label></span><br />
+              <input type="text" name="phone_number" class="input_text" value="{{ value.phone_number }}" />
+            </div>
+            
+            {{ mac.honeypot() }}
+
+            <div class="rf_row_contact">&nbsp;<br />
+               <input type="submit" class="submit_btn" value="" />
+            </div>             
+
+  {{ form_close() }}
+
+        </div>
+  </div>
+</div>
+
+<div id="cp_right">
+  <div>
+    <div align="right">
+      <a href="/"><input type="submit" class="members_home2_btn" value="" name=""></a>&nbsp;&nbsp;
+    </div>
+  </div>
+  <div style="background-color:#FFFFDD;width:155px"><center></center></div>
+</div>

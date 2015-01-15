@@ -1,0 +1,19 @@
+{% if selected_nonprofits %}
+    <h3>Member selected nonprofits for email invitation</h3>
+    <table id="tbl-invite">
+
+    {% for nonprofit in selected_nonprofits %}
+        <tr>
+            <td style="font-weight:bold">{{ nonprofit.name }}</td>
+            <td><input type="button" data-npid="{{ nonprofit.id }}" value="send email"></td>
+        </tr>
+    {% endfor %}
+
+    </table>
+{% else %}
+    <div class="message">Welcome to Admin</div>
+{% endif %}
+
+<div id="dialog-message" title="Invalid Email" style="display:none">
+  <p>Please enter a valid email address.</p>
+</div>

@@ -1,0 +1,189 @@
+<div id="cp_left">
+    <div class="registration">
+        <div class="registration_form">
+
+                <h1>{{ member.user.first_name }} {{ member.user.last_name }}</h1>
+                <div class="members_nprofit">
+                    <ul>
+                    {% for nonprofit in member.nonprofits %}
+                        <li><a href="#">{{ nonprofit.name }} <span class="members_title_heading2">({{ nonprofit.running_points }})</span></a></li>
+                    {% endfor %}
+                    </ul>
+                    <div class="edit_btn"><span>(Edit)</span><img src="/assets/img/england_bg.gif"></div>
+                </div>
+                <div class="member_person_div">
+                    <fieldset>
+                        <div class="member_person_div">
+                            <div class="member_person_div_image"><a href="/my/homepage"><img src="{{ img_filename }}"></a></div>
+                            <div class="member_person_div2">
+                                <div class="member_person_div2_heading1">Current Points : <span>{{ member.running_points }}</span></div>
+                                <div class="member_person_div2_heading2">Email: {{ member.user.email }}</div>
+                                <div class="member_person_div2_heading3">
+                                    Upload Photo :<img width="105" height="25" src="/assets/img/webcam_btn.gif">
+                                    <img width="105" height="25" src="/assets/img/facebook_btn.gif">
+                                </div>
+                            </div>
+                            <div class="member_person_div2_heading4">
+                                Challenges:   <span>5845</span>            
+                                Shopping:  <span>5845</span>                 
+                                New members: <span>5845</span> 
+                                <br>
+                                Misc:  <span>5845</span>                   
+                                TOTAL:  <span>1089</span>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                
+                <div class="clearBoth"></div>
+
+           {{ form_open({"enctype": "multipart/form-data"}) }}
+
+                <input type="hidden" name="posted_img_filename">
+
+                <div style="text-align:center">
+                    <div id="upload_webcam" style="text-align:center">
+                        <div>
+                            <div id="webcam"></div>
+                            <div style="margin:5px;">
+                                <img src="/assets/img/webcamlogo.png" style="vertical-align:text-top"/>
+                                <select id="cameraNames" size="1" onChange="changeCamera()" style="width:245px;font-size:10px;height:25px;"></select>
+                            </div>
+                        </div>
+                        <div>
+                            <input type="button" id="btn_capture_webcam" onclick="base64_toimage()" value="Capture Webcam Image">
+                        </div>
+                        <div>or</div>
+                    </div>
+                    <div>Upload photo <input type="file" name="img_filename"></div>
+                </div>
+
+            {% for nonprofit in member.nonprofits %}
+
+                <div class="why_i_chose">
+                    <fieldset>
+                        <div>
+                            <legend class="abaca-legend2"><cufon class="cufon cufon-canvas" alt="Why I Chose" style="width: 34px; height: 16px;"><canvas width="45" height="15" style="width: 45px; height: 15px; top: 0px; left: 0px;"></canvas><cufontext>Why I Chose</cufontext></cufon></legend>
+
+                            <legend class="abaca-legend2">
+                                <a href="#"><cufon class="cufon cufon-canvas" alt="{{ nonprofit.name }}" style="width: 32px; height: 16px;"><canvas width="43" height="15" style="width: 43px; height: 15px; top: 0px; left: 0px;"></canvas><cufontext>{{ nonprofit.name }}</cufontext></cufon></a>
+                                <input type="button" value="change" data-href="/my/nonprofit/{{ nonprofit.id }}">
+                            </legend>
+
+                            <div class="why_i_chose_div"><textarea class="reason_autosave" data-id="{{ nonprofit.id }}">{{ reasons[nonprofit.id] }}</textarea></div>
+
+                        </div>
+                    </fieldset>           
+                    <div class="share_btn_div"><div class="share_btn_div_text">To day I'd like to Invite</div>
+                        <img width="396" height="31" src="/assets/img/share_btn.gif">
+                    </div>
+                </div>
+                <br><br><br>
+                
+            {% endfor %}
+
+                <!-- Member invites -->
+                <div class="why_i_chose">
+                    <fieldset>
+                        <div>
+                            <div class="why_i_chose_div">
+                                <div class="today_share_heading">Today I’d like to invite
+                                  <div class="today_share_heading2">(receive 500 points for all who become members)</div>
+                              </div>
+                              <textarea name="invite_emails"></textarea>
+                          </div>
+                          <span class="post_btn_span"> <a href="#"> <input type="submit" class="post_btn" value=""></a><br>
+                            <br>
+                        </span><br><br>
+                        <br>
+                        <br>
+                        <br>
+                        </div>
+                    </fieldset>           
+                </div>
+
+            {{ form_close() }}
+
+            {% include "member-comments.twig" %}
+
+        </div>
+    </div>
+</div>
+{% include "right-new-members.twig" %}
+<div class="clear"></div>
+<div><img src="/assets/img/sponser_wanted.gif"></div>
+<script> 
+on_ready.push(function()
+{
+    $("#webcam").scriptcam({
+        height: 320,
+        width: 320,
+        path: '/assets/vendor/scriptcam/',
+        onError:onError,
+        onWebcamReady:onWebcamReady
+    });
+
+    /**
+     * Auto save when losing focus
+     */
+    $('textarea.reason_autosave').blur(function(){
+        $this = this;
+        $.post('/ajax/save_reason_for_choosing',
+            {
+                reason_text: $(this).val(),
+                nonprofit_id: $(this).data('id')
+            }, function(result){
+                if (result.success)
+                {
+                    if ("insert" == result.operation)
+                        $($this).attr('title', 'Successful saving of entries.');
+                    else if ("update" == result.operation)
+                        $($this).attr('title', 'Successful updating of entries.');
+                    else
+                        $($this).attr('title', 'Successful in clearing reasons for choosing.')
+                }
+                else
+                {
+                    $($this).attr('title', 'Failed attempt to update reasons for choosing.')
+                }
+            }, 'json'
+        );
+    });
+
+    $('#form_img_filename').change(function(){
+        parent = $(this).parent();
+        parent.children('button').remove();
+        parent.append($('<button/>')
+            .html('Change my photo permanently')
+            .css({ backgroundColor: '#D3CA35', padding: '2px 15px' })
+        );
+
+        img = $('div.member_person_div_image img');
+        read_url_improved(this, img);
+        img.attr('title', 'Click [Change my photo permanently] to save this photo');
+    });
+});
+function base64_toimage() {
+    $('div.member_person_div_image > img').attr("src","data:image/png;base64,"+$.scriptcam.getFrameAsBase64());
+
+    $.post('/ajax/save_member_webcam_image', { img_base64: $.scriptcam.getFrameAsBase64() }, function(response){
+        if (response.success)
+            $('input[name=posted_img_filename]').val(response.img_filename);
+        else
+            alert("Failed attempt to save webcam image, please try again.");
+    }, 'json');
+};
+function changeCamera() {
+    $.scriptcam.changeCamera($('#cameraNames').val());
+}
+function onError(errorId,errorMsg) {
+    // alert(errorMsg);
+    $('div#upload_webcam').hide();
+}           
+function onWebcamReady(cameraNames,camera,microphoneNames,microphone,volume) {
+    $.each(cameraNames, function(index, text) {
+        $('#cameraNames').append( $('<option></option>').val(index).html(text) )
+    }); 
+    $('#cameraNames').val(camera);
+}
+</script>

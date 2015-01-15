@@ -1,0 +1,43 @@
+<div id="login" >
+  <!-- <div class="ribbon"></div> -->
+  <div class="inner">
+  <div class="logo" ><img src="/assets/img/club_causes_logo.gif" alt="Club4Causes Admin" /></div>
+  <div class="formLogin">
+
+{{ form_open('auth/signin/admin') }}
+
+          <div class="tip">
+                <input data-focus="2800" name="username" type="text" id="username_id" title="Username" required aria-required="true">
+          </div>
+          <div class="tip">
+                <input name="password" type="password" id="password" title="Password" required aria-required="true">
+          </div>
+          <button class="hidden_submit"></button>
+
+          <div class="loginButton">
+            <!--
+            <div style="float:left; margin-left:-9px;">
+                <input type="checkbox" id="on_off" name="remember" class="on_off_checkbox"  value="1" />
+                <span class="f_help">Remember me</span>
+            </div>
+            -->
+            <div style="float:right; padding:3px 0; margin-right:-12px;">
+              <div> 
+                <ul class="uibutton-group">
+                   <li><a class="uibutton normal" href="submit" id="but_login" >Login</a></li>
+                   <!-- <li><a class="uibutton normal" href="#" id="forgetpass">forgetpass</a></li> -->
+
+               </ul>
+              </div>
+              
+            </div>
+            <div class="clear"></div>
+          </div>
+
+{{ form_close() }}
+
+  </div>
+</div>
+  <div class="clear"></div>
+  <div class="shadow"></div>
+</div>

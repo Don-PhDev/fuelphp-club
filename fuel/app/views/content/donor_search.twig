@@ -1,0 +1,117 @@
+<div id="salute_page_cp_left">
+  <div class="registration">
+    <img src="assets/img/club_causes_logo.gif">
+    <span class="salute_page_heading">Donor Page</span>
+    <span class="disclamair_heading">Disclaimer: No Donor Endorsement Implied</span>
+    <div class="nonprofit_title">
+      <div class="salute_page_heading2">A directory of top contributors and their beneficiaries</div>
+      <div class="salute_page_heading3">This directory shows recent gifts of $1-million or more made by individuals to charitable institutions. </div>
+    </div>
+    <br><br><br><br><br>
+
+{{ form_open({method: 'get'}) }}
+    <input type="hidden" name="go" value="1">
+
+    <div class="non_profit_box">
+      <div class="salute_page_heading4">Search the database:</div>
+      <div class="salute_search1"><div> Name of Donor: </div> <input type="text" name="search_donor" data-focus="1" value="{{ value.search_donor }}"></div>
+      <div class="salute_search2"><div> Amount of gift: </div> <input type="text" name="search_amount" class="numeric" maxlength="8" value="{{ value.search_amount }}"></div>
+      <div><a href="#"><input type="submit" class="search_btn" value=""></a></div>
+    </div>
+
+{% if getted %}
+{% if donors %}
+
+    <table class="nice_table" border="1">
+      <tr><th>Donor</th><th>Recipients</th></tr>
+
+  {% for donor in donors %}
+
+      <tr>
+        <td width="500px">
+          {{ "s" ? "<img src='/web_data/donor/#{ donor.image_filename }'>" : "" }}
+          <h2>{{ donor.name }}</h2>
+          <div class="about">{{ donor.organization_text }}</div>
+        </td>
+
+        <td>
+    {% for donation in donor.donations %}
+
+          <div class="recipient_group">
+            <div><strong>Recipient:</strong><span>{{ donation.nonprofit_name }}<span></div>
+            <div><strong>Amount:</strong><span class="amount">{{ donation.amount|number_format(0, '', ',') }} USD</span></div>
+            <div><strong>Date:</strong><span>{{ donation.created_at|date('d M Y') }}</span></div>
+          </div>
+
+      {% if not loop.last %}
+        <hr class="thinfade">
+      {% endif %}
+
+    {% endfor %}
+      </td>
+
+      </tr>
+
+  {% endfor %}
+
+{% else %}
+  <div>Nothing matched the search criteria.  Please try again.</div>
+{% endif %}
+{% endif %}
+
+    </table>
+
+    <button class="hidden_submit"></button>
+
+{{ form_close() }}
+
+    <div id="why_i_chose"></div>
+  </div>
+  </div>
+  <div class="clear"></div>
+  <div><img src="assets/img/sponser_wanted.gif"></div>
+</div>
+
+<style type="text/css">
+div.recipient_group strong {
+  margin-right: 10px;
+}
+div.recipient_group span {
+  float: right
+}
+span.amount {
+  color: brown;
+  font-weight: bold;
+}
+.thinfade {
+  margin: 25px 0;
+}
+div.about {
+  color: #666666;
+  margin-top: 16px;
+}
+.nice_table img {
+  min-width: 500px;
+  max-width: 500px;
+}
+.nice_table tr:hover {
+    background-color: #D8D8D9;
+    cursor: pointer;
+}
+tr.row_light {
+    background-color: #FFFFFF;
+}
+tr.row_dark {
+    background-color: #F8F8F8;
+}
+table.nice_table {
+    border-collapse: collapse;
+    margin-left: 1px;
+    margin-top: -11px;
+}
+table.nice_table, table.nice_table th, table.nice_table td {
+    border: 1px solid #69B1DA;
+    padding: 10px;
+    vertical-align: middle;
+}
+</style>

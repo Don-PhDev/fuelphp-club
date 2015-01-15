@@ -1,0 +1,49 @@
+<!-- full width -->
+<div class="widget">
+    <div class="header"><span><span class="ico gray administrator"></span>Benefactor</span>
+        <a class="uibutton submit_form" href="/admin/benefactor/create">Add a Benefactor</a>
+    </div><!-- End header -->
+    <div class="content" >
+
+{% for ben in benefactors %}
+        <!-- Third / Half column-->
+        <div class="widgets quasi_form">
+            <div class="oneThree">
+                <div class="profileSetting twoImageInput" >
+                    <div class="avartar"><img src="{{ ben.image_filename ? "/web_data/benefactor/#{ben.image_filename}" : '/assets/img/no_image_2.jpg' }}" alt="Organization logo" title="Organization logo" /></div>
+                </div>
+                <div class="profileSetting twoImageInput" >
+                    <div class="avartar"><img src="{{ ben.organization_logo ? "/web_data/benefactor/#{ben.organization_logo}" : '/assets/img/no_image_2.jpg' }}" alt="Organization logo" title="Organization logo" /></div>
+                </div>
+            </div>
+
+            <div class="twoOne">
+                <div class="section ">
+                    <label> Full name</label>   
+                    <div class="large">{{ ben.name }}</div>
+                </div>
+
+                <div class="section">
+                    <label> Organization</label>
+                    <div class="large">{{ ben.organization_name }}</div>
+                </div>
+
+                <div class="section ">
+                    <label> About</label>   
+                    <div class="large">{{ ben.organization_text }}</div>
+                </div>
+            </div>
+
+        </div><!-- End Third / Half column-->
+
+        <!-- clear fix -->
+        <div class="clear"></div>
+
+    {% if not loop.last %}
+        <hr class="thinfade">
+    {% endif %}
+
+{% endfor %}
+
+    </div><!-- End content -->
+</div><!-- End full width -->

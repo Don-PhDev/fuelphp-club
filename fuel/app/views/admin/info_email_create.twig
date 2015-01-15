@@ -1,0 +1,29 @@
+<!-- full width -->
+<div class="widget">
+  <div class="header"> <span ><span class="ico gray mail "></span>Create Daily Email</span></div>
+  <div class="content" >
+
+    {{ form_open({"id": "validation_demo"}) }}
+    
+    <div class="section">
+      <label>Subject<small>This will be the email subject</small></label>
+      <div>
+        <input type="text" name="subject" class="validate[required] full" aria-required="true" required value="{{ value.subject }}">
+        {{ errmsg.subject ? "<div class='flderrmsg'>#{ errmsg.subject }</div>" : '' }}
+      </div>
+    </div>
+
+    <div class="section">
+      <label>Email Text <small>Wysiwyg text entry, you may cut and paste or compose</small></label>  
+    </div>
+    <div><textarea name="email_text" id="email_text"  class="validate[required] editor wysiwyg" cols="" rows="">{{ value.email_text }}</textarea></div>
+    {{ errmsg.email_text ? "<div class='flderrmsg'>#{ errmsg.email_text }</div>" : '' }}
+    
+    <div class="section last">
+      <div><a class="uibutton submit_form" >Submit</a></div>
+    </div>
+
+    {{ form_close() }}
+    
+  </div><!-- End content -->
+</div><!-- End full width

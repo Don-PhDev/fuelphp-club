@@ -1,0 +1,13 @@
+
+div.field {
+    margin: 15px 0;
+    border-bottom: solid 1px #e6e7e8;
+}
+div.field a {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+div.field span {
+    margin-left: 18px;
+    color: #999;
+}

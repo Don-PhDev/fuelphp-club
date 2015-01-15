@@ -1,0 +1,34 @@
+{% macro select_with_grouping(name, assoc, selected, label, required) %}
+    <select name="{{ name }}" {{ required ? 'aria-required="true" required' : ''}}>
+        <option value="">{{ label ? label : name }}</option>
+    {% for group, assod in assoc %}
+        <optgroup label="{{ group }}">
+        {% for key, val in assod %}
+            <option value="{{ key }}" {{ selected == key ? 'selected="selected"' : '' }}>{{ val }}</option>
+        {% endfor %}
+        </optgroup>
+    {% endfor %}
+    </select>
+{% endmacro %}
+
+{% macro select(name, assoc, selected, label, required) %}
+    <select name="{{ name }}" {{ required ? 'aria-required="true" required' : ''}}>
+        <option value="">{{ label ? label : name }}</option>
+    {% for key, val in assoc %}
+        <option value="{{ key }}" {{ selected == key ? 'selected="selected"' : '' }}>{{ val }}</option>
+    {% endfor %}
+    </select>
+{% endmacro %}
+
+{% macro select_same_value(name, assoc, selected, label, required, class) %}
+    <select name="{{ name }}" {{ required ? 'aria-required="true" required' : ''}} {{ class ? "class='#{ class }'" : ''}}>
+        <option value="">{{ label ? label : name }}</option>
+    {% for nil, val in assoc %}
+        <option value="{{ val }}" {{ selected == val ? 'selected="selected"' : '' }}>{{ val }}</option>
+    {% endfor %}
+    </select>
+{% endmacro %}
+
+{% macro honeypot() %}
+    <input name="userComment" id="" class="_h_" value="" type="text">
+{% endmacro %}

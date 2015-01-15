@@ -1,0 +1,14 @@
+    <div class="causes-group">
+        
+{% if causes %}
+    {% for cause in causes %}
+
+        <div class="cause">
+            <a href="/celebrities/cause/{{ cause.id }}">{{ cause.cause }}</a>
+            <span data-cause-id="{{ cause.id }}">{# count(cause.celebrities) #} celebrities</span>
+        </div>
+
+    {% endfor %}
+{% endif %}
+
+    </div>

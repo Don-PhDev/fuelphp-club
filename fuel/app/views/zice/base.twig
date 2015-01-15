@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+    <title>Club4Causes Admin</title>
+    <link rel="shortcut icon" type="image/ico" href="/assets/vendor/zice/images/favicon2.ico"/> 
+    <link rel="stylesheet" type="text/css" href="/assets/vendor/zice/css/zice.style.css?a=18feb2013"/>
+    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="/assets/vendor/zice/components/flot/excanvas.min.js"></script><![endif]-->  
+
+{% if view_css_head %}
+<link rel="stylesheet" type="text/css" href="/{{ view_css_head }}">
+{% endif %}
+{% include "0000.script_js.twig" %}
+
+{% for script in cdn_scripts %}
+<script src="{{ script }}" type="text/javascript"></script>
+{% endfor %}
+<script type="text/javascript">on_ready=[];</script>
+
+{% for style, version in stylev %}
+    <link href="/assets/vendor/zice/css/{{ style }}?v={{ version }}" rel="stylesheet" media="all">
+{% endfor %}
+</head>        
+<body class="dashborad">        
+    <div id="alertMessage" class="error"></div>
+
+{% include "0002.header.twig" %}
+
+    <div id="shadowhead"></div>
+      
+{% include "0004.left_menu.twig" %}                        
+
+    <div id="content">
+        <div class="inner">
+
+            <div class="topcolumn">
+                <div class="logo"></div>
+{# include "0010.top_column.twig" #}
+            </div>
+
+            <div class="clear"></div>
+            
+<!-- Flash Messages -->
+{% if flash_okhide %}
+    <div class="alert-message success okhide" onclick="hide_flash(this, 300)"><p>{{ flash_okhide|join('</p><p>') }}</p></div>
+{% endif %}
+
+{% if flash_success %}
+    <div class="alert-message success" onclick="hide_flash(this, 300)"><p>{{ flash_success|join('</p><p>') }}</p></div>
+{% endif %}
+
+{% if flash_error %}
+    <div class="alert-message error" onclick="hide_flash(this, 300)"><p>{{ flash_error|join('</p><p>') }}</p></div>
+{% endif %}
+
+{% block content %}
+    {% include "base.widget.twig" %}
+{% endblock %}
+
+{# include "0020.widget.twig" %}
+{% include "0030.widget.twig" %}
+{% include "0040.column_left.twig" %}
+{% include "0050.column_right.twig" #}
+                
+            <!-- clear fix -->
+            <div class="clear"></div>
+
+            <div id="footer"> &copy; Copyright 2013 <span class="tip"><a  href="#" title="Club4Causes" >Club4Causes</a> </span> </div>
+
+        </div> <!--// End inner -->
+    </div> <!--// End content --> 
+    <div id="load_spinner"></div>
+{% for script, version in scriptv %}
+<script src="/assets/vendor/zice/js/{{ script }}?v={{ version }}" type="text/javascript"></script>
+{% endfor %}
+<script type="text/javascript">$(function(){$.each(on_ready,function(nil,f){f();});});</script>
+{% if view_js_foot %}
+<script type="text/javascript" src="/{{ view_js_foot }}"></script>
+{% endif %}
+</body>
+</html>

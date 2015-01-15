@@ -1,0 +1,33 @@
+{% set hold_initial = "" %}
+{% for celebrity in celebrities %}
+
+    {% set initial = celebrity.first_name|slice(0, 1)|capitalize %}
+
+    {% if hold_initial != initial %}
+
+        {% if hold_initial != "" %}
+            </div>
+        </div> <!-- close this letter "{{ hold_initial }}" -->
+        <div class="clearBoth"></div>
+
+        {% endif %}
+        {% set hold_initial = initial %}
+        
+            <div class="celebrity-alpha-group" id="letter-{{ initial }}">
+                <label class="initial">{{ initial }}</label>
+                <div>
+    {% endif %}
+
+                <div class="floatLeft one-third">
+                    <a data-image="{{ celebrity.image_filename }}" href="/celebrities/profile/{{ celebrity.id }}">
+                        {{ celebrity.first_name }} {{ celebrity.last_name }}
+                    </a>
+                </div>
+
+    {% if loop.last %}
+            </div>
+        </div> <!-- close this last letter "{{ hold_initial }}" -->
+        <div class="clearBoth"></div>
+    {% endif %}
+
+{% endfor %}

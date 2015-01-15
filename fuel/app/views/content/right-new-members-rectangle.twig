@@ -1,0 +1,21 @@
+<div class="newest_members">
+    <h2 class="nm_title">Newest Members</h2>
+    <div class="nm_content">
+        <ul>
+{% for member in newest_members %}
+            <li>
+                <a class="a_img_float" href="/member/index/{{ member.id }}"><img class="avatar-rect" src="{{ member.user.get_avatar(member.user.id) }}" title="{{ member.user.first_name }} {{ member.user.last_name }}"></a>
+                <span class="name">{{ member.user.first_name }} {{ member.user.last_name }}</span>
+                
+                <span class="charity">
+    {% for nonprofit in member.nonprofits %}
+                    <a href="/nonprofit/index/{{ nonprofit.id }}">{{ nonprofit.name }}</a><br />
+    {% endfor %}
+                </span>
+
+                <span class="date">{{ date("d F, Y", member.created_at) }}</span>
+            </li>
+{% endfor %}
+        </ul>
+    </div>
+</div>

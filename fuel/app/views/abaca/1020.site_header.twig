@@ -1,0 +1,28 @@
+<div id="site_header">
+	<div class="sh_inner">
+    <a href="/" class="main_logo"></a>
+    <div class="sm_icons">
+    	<a href=""><span class="sm_icon_01"></span></a>
+    	<a href=""><span class="sm_icon_02"></span></a>
+    	<a href=""><span class="sm_icon_03"></span></a>
+    	<a href=""><span class="sm_icon_04"></span></a>
+    	<a href="http://digg.com/"><span class="sm_icon_05"></span></a>
+    	<a href="http://www.youtube.com/"><span class="sm_icon_06"></span></a>
+    	<a href="https://www.facebook.com/"><span class="sm_icon_07"></span></a>
+    	<a href="https://twitter.com/"><span class="sm_icon_08"></span></a>
+    	<a href=""><span class="sm_icon_09"></span></a>
+    	<a href="http://www.linkedin.com/"><span class="sm_icon_10"></span></a>
+    </div>
+    <ul id="main_menu">
+    	<li><a href=""><span>Member Profiles</span></a></li>
+    	<li><a href=""><span>Non Profits</span></a></li>
+    	<li><a href=""><span>Challenges</span></a></li>
+    	<li><a href=""><span>Shopping Mall</span></a></li>
+      </ul>
+    
+{% if show_header_content %}
+    {% include "#{C4c.theme}/1025.site_header_content.twig" %}   
+{% endif %}
+    
+    </div>
+</div>

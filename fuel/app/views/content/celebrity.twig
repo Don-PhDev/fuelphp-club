@@ -1,0 +1,80 @@
+<div id="tail"><!-- Hovering on celebrity list will show this --></div>
+<div id="cp_left">
+    <div class="ads ads-topbot watermark">Advertising</div>
+    <br>
+
+    <div class="disclaimer">Names, logos and pictures are property of their respective owners.</div>
+
+    {% if page_title %}
+
+    <div class="title">
+        <h1>{{ page_title }}</h1>
+
+        {% if page_title_more %}
+        <span>{{ page_title_more }}</span>
+        {% endif %}
+    </div>
+
+    {% else %}
+
+        {#<nav class="alphabet">
+        {% for letter in ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'] %}
+            <a class="btn_letter">{{ letter }}</a>
+        {% endfor %}
+        </nav>#}
+
+    <div class="title">
+        <h1>Celebrities Who Give</h1>
+    </div>
+        <p>We list over {{ count }} celebrities and the charities they support!<br /><br /> </p>
+
+    {% endif %}
+
+    {% include "celebrity-featured.twig" %}
+    <div class="clearBoth"></div>
+
+{% if links_first %}
+    <div id="celebrities_spinner"></div>
+    <div class="celebrity-links two-thirds floatLeft">
+        {% include "celebrity-links.twig" %}
+    </div>
+    <div id="ads-celebrity-links" class="one-third floatRight">
+        <div class="ads ads-right watermark" style="">Advertising</div>
+    </div>
+    <div class="clearBoth"></div>
+{% endif %}
+
+    <div class="form floatLeft">
+        <h1>Find a celebrity</h1>
+        <div class="links">
+            <!-- <a href="cause">Browse by cause<span>, click to expand...</span></a> -->
+            <div class="head-links">Browse by cause</div>
+            <div id="cause-links">{{ reddo_cause }}</div><div id="cause_spinner"></div>
+        </div>
+        <div class="links">
+            <!-- <a href="field">Browse by field<span>, click to expand...</span></a> -->
+            <div class="head-links">Browse by field</div>
+            <div id="field-links">{{ reddo_field }}</div><div id="field_spinner"></div>
+        </div>
+    </div>
+    <div class="one-third floatRight">
+        <div class="ads ads-right watermark" style="">Advertising</div>
+    </div>
+
+{% if not links_first %}
+    <div class="clearBoth"></div>
+    <hr class="thinfade">
+    <div class="clearBoth"></div>
+    <div id="celebrities_spinner" class="two-thirds"></div>
+    <div class="celebrity-links two-thirds floatLeft">
+        {% include "celebrity-links.twig" %}
+    </div>
+    <div id="ads-celebrity-links" class="one-third floatRight">
+        <div class="ads ads-right watermark" style="">Advertising</div>
+    </div>
+ {% endif %}
+
+</div>
+<div class="clearBoth"></div>
+<br>
+<div class="ads ads-topbot watermark">Advertising</div>
